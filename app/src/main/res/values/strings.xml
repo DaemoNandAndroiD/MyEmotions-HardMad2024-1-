@@ -2,4 +2,21 @@
     <string name="app_name">HardMad2024-1</string>
     <string name="welcome_screen_greet_text">Добро\nпожаловать</string>
     <string name="google_enter_button_text">Войти через Google</string>
+    <string name="per_day">в день:</string>
+    <string name="streak">серия:</string>
+    <string name="journal_label">Журнал</string>
+    <string name="statistics_label">Статистика</string>
+    <string name="settings_label">Настройки</string>
+
+    <plurals name="days">
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+    </plurals>
+
+    <plurals name="records">
+        <item quantity="one">%d запись</item>
+        <item quantity="few">%d записи</item>
+        <item quantity="many">%d записей</item>
+    </plurals>
 </resources>

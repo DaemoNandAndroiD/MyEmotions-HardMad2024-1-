@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_journal"
+        android:title="@string/journal_label"
+        android:icon="@drawable/ic_journal">
+    </item>
+    <item
+        android:id="@+id/nav_statistics"
+        android:title="@string/statistics_label"
+        android:icon="@drawable/ic_statistics">
+    </item>
+    <item
+        android:id="@+id/nav_settings"
+        android:title="@string/settings_label"
+        android:icon="@drawable/ic_settings">
+    </item>
+</menu>

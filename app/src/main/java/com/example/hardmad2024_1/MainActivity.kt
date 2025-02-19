@@ -1,54 +1,40 @@
 package com.example.hardmad2024_1
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
-import android.graphics.Color
-import android.graphics.RadialGradient
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.GradientDrawable.RADIAL_GRADIENT
 import android.os.Bundle
-import android.view.View
-import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
-import androidx.activity.ComponentActivity
+import android.os.PersistableBundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.core.content.ContextCompat
-import com.example.hardmad2024_1.databinding.WelcomeActivityBinding
+import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.hardmad2024_1.databinding.CoordinatorBinding
 
-
-class WelcomeActivity : ComponentActivity() {
-    private lateinit var binding: WelcomeActivityBinding
+class MainActivity:FragmentActivity() {
+    private lateinit var binding:CoordinatorBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = WelcomeActivityBinding.inflate(layoutInflater)
+
+        binding = CoordinatorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        startGradientAnimation()
-    }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val bottomNavBar = binding.navBar
+        bottomNavBar.setupWithNavController(navController)
 
-    private fun startGradientAnimation() {
-        val view = binding.gradientView
+        bottomNavBar.setOnItemSelectedListener { item ->
+            val navOptions = NavOptions.Builder()
+                .setLaunchSingleTop(true)
+                .setRestoreState(true)
+                .build()
 
-        val animatorX = ObjectAnimator.ofFloat(view, "translationX", -100f, 100f).apply {
-            duration = 2000
-            repeatCount = ValueAnimator.INFINITE
-            repeatMode = ValueAnimator.REVERSE
-            interpolator = LinearInterpolator()
-        }
-
-        val animatorY = ObjectAnimator.ofFloat(view, "translationY", -100f, 100f).apply {
-            duration = 4000
-            repeatCount = ValueAnimator.INFINITE
-            repeatMode = ValueAnimator.REVERSE
-            interpolator = LinearInterpolator()
-        }
-
-        AnimatorSet().apply {
-            playTogether(animatorX, animatorY)
-            start()
+            when (item.itemId) {
+                R.id.nav_journal -> navController.navigate(R.id.nav_journal, null, navOptions)
+            }
+            true
         }
     }
 }

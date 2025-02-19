@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_journal">
+
+    <fragment
+        android:id="@+id/nav_journal"
+        app:defaultNavHost="true"
+        android:name="com.example.hardmad2024_1.JournalFragment"
+        tools:layout="@layout/journal_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_statistics"
+        app:defaultNavHost="true"
+        tools:layout="@layout/statistics_fragment"/>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        app:defaultNavHost="true"
+        tools:layout="@layout/settings_fragment"/>
+
+</navigation>

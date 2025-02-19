@@ -1,47 +1,54 @@
 package com.example.hardmad2024_1
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
+import android.graphics.Color
+import android.graphics.RadialGradient
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.GradientDrawable.RADIAL_GRADIENT
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LinearInterpolator
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.hardmad2024_1.ui.theme.HardMad20241Theme
+import androidx.core.content.ContextCompat
+import com.example.hardmad2024_1.databinding.WelcomeActivityBinding
 
-class MainActivity : ComponentActivity() {
+
+class WelcomeActivity : ComponentActivity() {
+    private lateinit var binding: WelcomeActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            HardMad20241Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        binding = WelcomeActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        startGradientAnimation()
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun startGradientAnimation() {
+        val view = binding.gradientView
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HardMad20241Theme {
-        Greeting("Android")
+        val animatorX = ObjectAnimator.ofFloat(view, "translationX", -100f, 100f).apply {
+            duration = 2000
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.REVERSE
+            interpolator = LinearInterpolator()
+        }
+
+        val animatorY = ObjectAnimator.ofFloat(view, "translationY", -100f, 100f).apply {
+            duration = 4000
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.REVERSE
+            interpolator = LinearInterpolator()
+        }
+
+        AnimatorSet().apply {
+            playTogether(animatorX, animatorY)
+            start()
+        }
     }
 }

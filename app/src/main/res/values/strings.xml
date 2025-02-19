@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HardMad2024-1</string>
+    <string name="welcome_screen_greet_text">Добро\nпожаловать</string>
+    <string name="google_enter_button_text">Войти через Google</string>
 </resources>

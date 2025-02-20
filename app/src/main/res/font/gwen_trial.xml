@@ -6,4 +6,8 @@
     <font
         android:fontWeight="850"
         android:font="@font/gwen_trial_extrabold" />
+
+    <font
+        android:fontWeight="750"
+        android:font="@font/gwen_trial_bold" />
 </font-family>

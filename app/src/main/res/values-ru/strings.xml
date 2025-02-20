@@ -7,8 +7,6 @@
     <string name="journal_label">Журнал</string>
     <string name="statistics_label">Статистика</string>
     <string name="settings_label">Настройки</string>
-    <string name="journal_title">Что вы сейчас\nчувствуете?</string>
-    <string name="card_title">Я чувствую</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>

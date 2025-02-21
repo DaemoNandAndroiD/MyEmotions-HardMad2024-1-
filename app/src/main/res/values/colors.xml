@@ -16,4 +16,12 @@
     <color name="gradient_gray">#666666</color>
     <color name="gradient_black">#1A1A1A</color>
     <color name="blue_text">#33BBFF</color>
+    <color name="green_text">#33FF77</color>
+    <color name="yellow_text">#FFBB33</color>
+    <color name="red_text">#FF3333</color>
+    <color name="gray_for_card">#2C2C2E</color>
+    <color name="blue_for_card">#FF00AAFF</color>
+    <color name="green_for_card">#FF00FF55</color>
+    <color name="red_for_card">#FFFF0000</color>
+    <color name="yellow_for_card">#FFFFAA00</color>
 </resources>

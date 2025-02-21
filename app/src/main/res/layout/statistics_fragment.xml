@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tabRippleColor="@null"
+        android:background="@color/black"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorColor="@color/white"
+        app:tabTextAppearance="@style/TabText"
+        app:tabMode="scrollable"
+        app:tabPaddingStart="16dp"
+        app:tabPaddingTop="12dp"
+        app:tabPaddingBottom="12dp">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17-23 фев">
+        </com.google.android.material.tabs.TabItem>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10–16 фев">
+        </com.google.android.material.tabs.TabItem>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3–9 фев">
+        </com.google.android.material.tabs.TabItem>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="27 янв – 2 фев">
+        </com.google.android.material.tabs.TabItem>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="19 фев – 2 март">
+        </com.google.android.material.tabs.TabItem>
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <io.secf4ult.verticaltablayout.VerticalTabLayout
+            android:id="@+id/verticalTabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabPaddingBottom="4dp"
+            android:background="@color/black">
+
+
+        </io.secf4ult.verticaltablayout.VerticalTabLayout>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerVertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

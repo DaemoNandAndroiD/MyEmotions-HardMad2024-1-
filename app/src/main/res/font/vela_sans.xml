@@ -5,6 +5,10 @@
         android:font="@font/velasans_medium" />
 
     <font
+        android:fontWeight="400"
+        android:font="@font/velasans_regular" />
+
+    <font
         android:fontWeight="700"
         android:font="@font/velasans_bold" />
 </font-family>

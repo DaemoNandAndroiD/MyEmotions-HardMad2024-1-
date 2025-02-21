@@ -3,10 +3,10 @@
     <gradient
         android:type="radial"
         android:startColor="@color/gray_for_card"
-        android:endColor="@color/blue_for_card"
+        android:endColor="@color/yellow_for_card"
         android:centerX="0"
         android:centerY="50%"
-        android:gradientRadius="3000dp">
+        android:gradientRadius="2000dp">
     </gradient>
     <corners android:radius="16dp"/>
 </shape>

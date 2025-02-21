@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation("com.github.secf4ult:VerticalTabLayout:v0.1.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

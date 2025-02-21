@@ -10,4 +10,12 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/white</item>
     </style>
+
+    <style name="TabText" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/velasans_regular</item>
+    </style>
 </resources>

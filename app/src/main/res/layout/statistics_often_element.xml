@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_green_emote">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Спокойствие"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/velasans_regular"
+        android:layout_marginLeft="8dp"
+        android:layout_gravity="center_vertical">
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/progress_container"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="@drawable/card_shape_green"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/emotion_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/velasans_bold"
+            android:padding="4dp"/>
+    </LinearLayout>
+
+</LinearLayout>

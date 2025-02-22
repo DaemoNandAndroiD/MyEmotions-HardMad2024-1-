@@ -38,6 +38,7 @@ class MainActivity:FragmentActivity() {
             when (item.itemId) {
                 R.id.nav_journal -> navController.navigate(R.id.nav_journal, null, navOptions)
                 R.id.nav_statistics -> navController.navigate(R.id.nav_statistics, null, navOptions)
+                R.id.nav_settings -> navController.navigate(R.id.nav_settings, null, navOptions)
             }
             true
         }

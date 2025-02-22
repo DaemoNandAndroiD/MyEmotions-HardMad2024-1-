@@ -2,6 +2,7 @@ package com.example.hardmad2024_1
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.hardmad2024_1.databinding.StatisticsGeneralBinding
@@ -22,36 +23,41 @@ class GeneralStatisticsFragment:Fragment(R.layout.statistics_general) {
         var percentages = listOf(50f, 20f, 30f)
         percentages = percentages.sortedDescending()
 
-        var radius = calculateCircles(
-            364f,
-            430f,
-            percentages
-        )
+        var width:Float = 0f
+        var height:Float = 0f
 
-        if (radius.size == 2){
-            initTwoCircle(radius, percentages)
+        binding.circleContainer.post {
+            width = binding.circleContainer.width.toFloat()
+            height = binding.circleContainer.height.toFloat()
 
-            binding.circle1.translationZ = 1f
-            binding.circle2.translationZ = 0f
+            val radius = calculateCircles(
+                width,
+                height,
+                percentages
+            )
+
+            if (radius.size == 2){
+                initTwoCircle(radius, percentages)
+                binding.circle1.translationZ = 1f
+                binding.circle2.translationZ = 0f
+            }
+
+            if (radius.size == 3){
+                initThreeCircle(radius, percentages)
+
+                binding.circle1.translationZ = 2f
+                binding.circle2.translationZ = 1f
+                binding.circle3.translationZ = 0f
+            }
+            if (radius.size == 4){
+                initFourCircle(radius, percentages)
+
+                binding.circle1.translationZ = 3f
+                binding.circle2.translationZ = 2f
+                binding.circle3.translationZ = 1f
+                binding.circle4.translationZ = 0f
+            }
         }
-
-        if (radius.size == 3){
-            initThreeCircle(radius, percentages)
-
-            binding.circle1.translationZ = 2f
-            binding.circle2.translationZ = 1f
-            binding.circle3.translationZ = 0f
-        }
-        if (radius.size == 4){
-            initFourCircle(radius, percentages)
-
-            binding.circle1.translationZ = 3f
-            binding.circle2.translationZ = 2f
-            binding.circle3.translationZ = 1f
-            binding.circle4.translationZ = 0f
-        }
-
-
     }
 
     private fun calculateCircles(containerWidth: Float, containerHeight: Float, percentages: List<Float>, alpha: Float = 0.7f): List<Float> {
@@ -68,7 +74,7 @@ class GeneralStatisticsFragment:Fragment(R.layout.statistics_general) {
 
     fun initOneCircle(radius:List<Float>, percentages: List<Float>){
         binding.circle1.apply {
-            val sizePx = (radius[0] * 2).toInt().toPx(context)
+            val sizePx = (radius[0] * 2).toInt()
 
             layoutParams.apply {
                 height = sizePx
@@ -86,7 +92,7 @@ class GeneralStatisticsFragment:Fragment(R.layout.statistics_general) {
         initOneCircle(radius,percentages)
 
         binding.circle2.apply {
-            val sizePx = (radius[1] * 2).toInt().toPx(context)
+            val sizePx = (radius[1] * 2).toInt()
 
             layoutParams.apply {
                 height = sizePx
@@ -105,7 +111,7 @@ class GeneralStatisticsFragment:Fragment(R.layout.statistics_general) {
         initTwoCircle(radius,percentages)
 
         binding.circle3.apply {
-            val sizePx = (radius[2] * 2).toInt().toPx(context)
+            val sizePx = (radius[2] * 2).toInt()
 
             layoutParams.apply {
                 height = sizePx
@@ -125,7 +131,7 @@ class GeneralStatisticsFragment:Fragment(R.layout.statistics_general) {
         initThreeCircle(radius,percentages)
 
         binding.circle4.apply {
-            val sizePx = (radius[3] * 2).toInt().toPx(context)
+            val sizePx = (radius[3] * 2).toInt()
 
             layoutParams.apply {
                 height = sizePx

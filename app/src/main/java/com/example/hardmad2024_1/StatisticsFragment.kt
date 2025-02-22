@@ -28,6 +28,16 @@ class StatisticsFragment: Fragment(R.layout.statistics_fragment) {
         val adapter = ViewPagerAdapter(this)
         binding.viewPagerVertical.adapter = adapter
 
+        binding.viewPagerVertical.offscreenPageLimit = 1
+        binding.viewPagerVertical.setPageTransformer { page, position ->
+            if (position >= 0) {
+                page.translationY = -page.height * 0.1f * position
+
+                val alpha = 1 - (0.4f * position)
+                page.alpha = alpha
+            }
+        }
+
         val verticalTabLayout: VerticalTabLayout = binding.verticalTabLayout
 
         VerticalTabLayoutMediator(

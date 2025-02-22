@@ -9,6 +9,15 @@
     <string name="settings_label">Настройки</string>
     <string name="journal_title">Что вы сейчас\nчувствуете?</string>
     <string name="card_title">Я чувствую</string>
+    <string name="stat_general_title">Эмоции\nпо категориям</string>
+    <string name="week_stat_title">Эмоции\nпо дням недели</string>
+    <string name="first_day">Понедельник</string>
+    <string name="second_day">Вторник</string>
+    <string name="third_day">Среда</string>
+    <string name="fourth_day">Четверг</string>
+    <string name="fifth_day">Пятница</string>
+    <string name="sixth_day">Суббота</string>
+    <string name="seventh_day">Воскресенье</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>

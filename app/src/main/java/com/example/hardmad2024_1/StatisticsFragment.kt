@@ -29,11 +29,14 @@ class StatisticsFragment: Fragment(R.layout.statistics_fragment) {
         binding.viewPagerVertical.adapter = adapter
 
         val verticalTabLayout: VerticalTabLayout = binding.verticalTabLayout
+
         VerticalTabLayoutMediator(
             verticalTabLayout,
             binding.viewPagerVertical,
             (VerticalTabLayoutMediator.TabConfigurationStrategy { tab: VerticalTabLayout.Tab, position: Int ->
-                tab.setCustomView(ImageView(context).apply { setImageResource(R.drawable.rounded_tab_indicator) })
+                tab.setCustomView(ImageView(context).apply {
+                    setImageResource(R.drawable.rounded_tab_indicator)
+                })
             })
         ).attach()
     }

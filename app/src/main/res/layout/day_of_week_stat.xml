@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/day_of_week"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:fontFamily="@font/velasans_regular"
+                android:textSize="12sp"
+                android:layout_marginRight="16dp"></TextView>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="17 фев"
+                android:textColor="@color/white"
+                android:fontFamily="@font/velasans_regular"
+                android:textSize="12sp"
+                android:layout_marginRight="16dp">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/emotions_container"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:orientation="vertical">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/icon_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right">
+
+            <ImageView
+                android:id="@+id/placeholder"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_placeholder_emote">
+            </ImageView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#2C2C2E"></View>
+
+</LinearLayout>

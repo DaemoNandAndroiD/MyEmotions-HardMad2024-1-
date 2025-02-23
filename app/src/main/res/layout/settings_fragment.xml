@@ -64,19 +64,121 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.kyleduo.switchbutton.SwitchButton
-                android:id="@+id/sb_ios"
-                app:kswBackDrawable="@drawable/switch_button_back_drawable"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:kswAnimationDuration="300"
-                app:kswThumbMargin="4dp"
-                app:kswThumbDrawable="@drawable/switch_button_thumb_selector"
-                android:checked="true"/>
+                android:src="@drawable/ic_notification">
+            </ImageView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/velasans_medium"
+                android:text="@string/send_notifications"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp">
+
+            </TextView>
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:thumbTint="@color/switch_button_thumb_selector"
+                app:trackTint="@color/switch_button_back_drawable">
+
+            </com.google.android.material.materialswitch.MaterialSwitch>
+
         </LinearLayout>
-        
+
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:id="@+id/notifications_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/label_shape">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/velasans_regular"
+                    android:text="20:00"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginVertical="18dp" />
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_delete"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/label_shape"
+                    android:backgroundTint="#666666"
+                    android:layout_margin="8dp">
+                </ImageButton>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/label_shape"
+            android:backgroundTint="@color/white"
+            android:paddingVertical="16dp"
+            android:text="@string/add_notification"
+            android:textColor="@color/black"
+            android:fontFamily="@font/velasans_medium"
+            android:textSize="16sp"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_fingerprint">
+            </ImageView>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/velasans_medium"
+                android:text="@string/enter_fingerprint"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp">
+
+            </TextView>
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                app:thumbTint="@color/switch_button_thumb_selector"
+                app:trackTint="@color/switch_button_back_drawable">
+
+            </com.google.android.material.materialswitch.MaterialSwitch>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 

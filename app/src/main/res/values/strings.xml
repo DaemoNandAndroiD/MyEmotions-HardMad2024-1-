@@ -19,6 +19,9 @@
     <string name="sixth_day">Суббота</string>
     <string name="seventh_day">Воскресенье</string>
     <string name="settings_title">Настройки</string>
+    <string name="send_notifications">Присылать напоминания</string>
+    <string name="add_notification">Добавить напоминание</string>
+    <string name="enter_fingerprint">Вход по отпечатку пальца</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>

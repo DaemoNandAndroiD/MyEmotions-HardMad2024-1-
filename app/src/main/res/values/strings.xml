@@ -22,6 +22,20 @@
     <string name="send_notifications">Присылать напоминания</string>
     <string name="add_notification">Добавить напоминание</string>
     <string name="enter_fingerprint">Вход по отпечатку пальца</string>
+    <string name="bottom_sheet_title">Напоминание</string>
+    <string name="hours_desc">Часы</string>
+    <string name="mins_desc">Минуты</string>
+    <string name="save_btn_bottom_sheet">Сохранить</string>
+    <string name="often_stat_title">Самые частые\nэмоции</string>
+    <string name="stat_suring_day_title">Ваше настроение\nв течение дня</string>
+    <string name="early_morning">Раннее\nутро</string>
+    <string name="morning">Утро</string>
+    <string name="afternoon">День</string>
+    <string name="evening">Вечер</string>
+    <string name="late_evening">Поздний\nвечер</string>
+    <string name="base_add_note_text">Выберите эмоцию, лучше всего\nописывающую, что вы сейчас чувствуете</string>
+    <string name="note_details_title">Запись</string>
+    <string name="save_btn_text">Сохранить</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>

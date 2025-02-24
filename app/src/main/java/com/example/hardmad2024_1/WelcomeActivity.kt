@@ -42,14 +42,14 @@ class WelcomeActivity : ComponentActivity() {
         val view = binding.gradientView
 
         val animatorX = ObjectAnimator.ofFloat(view, "translationX", -100f, 100f).apply {
-            duration = 1000
+            duration = 5000
             repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.REVERSE
             interpolator = LinearInterpolator()
         }
 
         val animatorY = ObjectAnimator.ofFloat(view, "translationY", -100f, 100f).apply {
-            duration = 1000
+            duration = 5000
             repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.REVERSE
             interpolator = LinearInterpolator()

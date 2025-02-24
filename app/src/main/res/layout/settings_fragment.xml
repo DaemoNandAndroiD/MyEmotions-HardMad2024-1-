@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="48dp"
         android:text="@string/settings_title"
         android:fontFamily="@font/gwen_trial_regular"
         android:textColor="@color/white"
@@ -132,6 +132,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/add_notification"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -180,7 +181,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

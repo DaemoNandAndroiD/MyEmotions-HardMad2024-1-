@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="48dp"
         android:text="@string/welcome_screen_greet_text"
         android:fontFamily="@font/gwen_trial_extrabold"
         android:textColor="@color/black"

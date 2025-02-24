@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="68dp">
+            android:layout_marginTop="40dp">
 
             <TextView
                 android:id="@+id/records"
@@ -135,6 +135,7 @@
             app:layout_constraintTop_toTopOf="@+id/progressBar">
 
             <ImageButton
+                android:id="@+id/addBtn"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/rounded_button"
@@ -154,7 +155,7 @@
 
         <LinearLayout
             android:id="@+id/emotions_list"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:orientation="vertical"

@@ -1,5 +1,6 @@
 package com.example.hardmad2024_1
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.RadialGradient
 import android.graphics.Shader
@@ -77,5 +78,9 @@ class JournalFragment:Fragment(R.layout.journal_fragment){
         binding.emotionsList.addView(card1)
         binding.emotionsList.addView(card2)
         binding.emotionsList.addView(card3)
+
+        binding.addBtn.setOnClickListener {
+            startActivity(Intent(context, AddNoteActivity::class.java))
+        }
     }
 }

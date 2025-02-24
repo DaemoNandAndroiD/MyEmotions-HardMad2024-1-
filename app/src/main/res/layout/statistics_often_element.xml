@@ -3,42 +3,52 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginBottom="8dp">
-
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/ic_green_emote">
-    </ImageView>
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Спокойствие"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:fontFamily="@font/velasans_regular"
-        android:layout_marginLeft="8dp"
-        android:layout_gravity="center_vertical">
-    </TextView>
+    android:layout_marginBottom="8dp"
+    android:weightSum="2.1">
 
     <LinearLayout
-        android:id="@+id/progress_container"
         android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:background="@drawable/card_shape_green"
-        android:gravity="center">
+        android:layout_weight="1.1"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="8dp">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/emoteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/velasans_regular"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="8dp"
+        android:layout_height="match_parent"></View>
+
+    <LinearLayout
+        android:id="@+id/stat_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="left">
         <TextView
             android:id="@+id/emotion_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
-            android:textColor="@android:color/black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/black"
             android:textSize="16sp"
-            android:fontFamily="@font/velasans_bold"
-            android:padding="4dp"/>
+            android:fontFamily="@font/velasans_bold"/>
     </LinearLayout>
 
 </LinearLayout>

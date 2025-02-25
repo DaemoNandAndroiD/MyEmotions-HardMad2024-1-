@@ -36,6 +36,9 @@
     <string name="base_add_note_text">Выберите эмоцию, лучше всего\nописывающую, что вы сейчас чувствуете</string>
     <string name="note_details_title">Запись</string>
     <string name="save_btn_text">Сохранить</string>
+    <string name="note_Activity_title">Чем вы занимались?</string>
+    <string name="human_title">С кем вы были?</string>
+    <string name="place_title">Где вы были?</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>

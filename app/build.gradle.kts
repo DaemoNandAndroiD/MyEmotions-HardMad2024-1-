@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation("com.github.secf4ult:VerticalTabLayout:v0.1.0")
     implementation("com.kyleduo.switchbutton:library:2.1.0")
+    implementation ("com.google.android.flexbox:flexbox:3.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

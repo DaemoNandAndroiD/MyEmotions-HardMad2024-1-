@@ -9,7 +9,9 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardmad2024_1.databinding.SettingsFragmentBinding
+import com.example.hardmad2024_1.utilities.NotificationRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat.CLOCK_24H
@@ -25,6 +27,16 @@ class SettingsFragment: Fragment(R.layout.settings_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = SettingsFragmentBinding.bind(view)
+
+        val recyclerView = binding.notificationsContainer
+
+        val layoutManager = LinearLayoutManager(context)
+        val adapter= NotificationRecyclerAdapter()
+
+        recyclerView.apply {
+            this.layoutManager = layoutManager
+            this.adapter = adapter
+        }
 
         binding.addNotification.setOnClickListener {
             val timePicker = fragmentManager?.let { it1 ->
@@ -52,6 +64,7 @@ class SettingsFragment: Fragment(R.layout.settings_fragment) {
             }
 
             bottomSheetContent.findViewById<AppCompatButton>(R.id.saveBtn).setOnClickListener {
+                adapter.addItem(bottomSheetContent.findViewById<TextView>(R.id.hours).text.toString() + ":" + bottomSheetContent.findViewById<TextView>(R.id.minutes).text)
                 bottomSheet?.dismiss()
             }
 

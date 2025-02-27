@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -60,6 +61,7 @@ dependencies {
     implementation("com.github.secf4ult:VerticalTabLayout:v0.1.0")
     implementation("com.kyleduo.switchbutton:library:2.1.0")
     implementation ("com.google.android.flexbox:flexbox:3.0.0")
+    implementation("com.otaliastudios:zoomlayout:1.9.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

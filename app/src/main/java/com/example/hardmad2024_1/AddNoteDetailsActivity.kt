@@ -1,13 +1,16 @@
 package com.example.hardmad2024_1
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.TypedValue
 import android.view.KeyEvent
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -18,6 +21,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.marginRight
 import androidx.core.view.size
 import com.example.hardmad2024_1.databinding.AddNoteDetailsActivityBinding
+import com.example.hardmad2024_1.utilities.CardData
 import com.example.hardmad2024_1.utilities.toPx
 import org.w3c.dom.Text
 
@@ -26,6 +30,8 @@ class AddNoteDetailsActivity:ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val card = intent.getParcelableExtra<CardData>("card")
 
         binding = AddNoteDetailsActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,6 +44,16 @@ class AddNoteDetailsActivity:ComponentActivity() {
 
         binding.backButton.setOnClickListener {
             finish()
+        }
+
+        binding.saveBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+
+        card?.let {
+            editCard(it, binding.card)
         }
 
         binding.activityContainer.addView(addNewTextView("Приём пищи"), binding.activityContainer.size -2)
@@ -138,5 +154,16 @@ class AddNoteDetailsActivity:ComponentActivity() {
         }
 
         return textView
+    }
+
+    private fun editCard(card: CardData, cardView: View){
+        cardView.background = resources.getDrawable(card.backgroundDrawable)
+        cardView.findViewById<TextView>(R.id.date).text = card.date
+        cardView.findViewById<ImageView>(R.id.icon).setImageResource(card.icon)
+        val emotionType = cardView.findViewById<TextView>(R.id.emotion_type)
+        emotionType.apply {
+            text = card.emoteText
+            setTextColor(resources.getColor(card.textColor))
+        }
     }
 }

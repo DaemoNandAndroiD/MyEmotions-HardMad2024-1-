@@ -31,6 +31,7 @@ class SettingsFragment: Fragment(R.layout.settings_fragment) {
                 MaterialTimePicker.Builder()
                     .setTimeFormat(CLOCK_24H)
                     .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
+                    .setTheme(R.style.BaseTheme_TimePicker)
                     .build()
             }
 

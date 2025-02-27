@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.Fragment
 import com.example.hardmad2024_1.databinding.JournalFragmentBinding
+import com.example.hardmad2024_1.utilities.CardData
 
 
 class JournalFragment:Fragment(R.layout.journal_fragment){
@@ -31,56 +32,64 @@ class JournalFragment:Fragment(R.layout.journal_fragment){
         val rotateAnimation = AnimationUtils.loadAnimation(context, R.anim.rotation_gradient)
         binding.progressBar.animation = rotateAnimation
 
-        initCard()
+        binding.addBtn.setOnClickListener {
+            startActivity(Intent(context, AddNoteActivity::class.java))
+        }
+
+        initCards()
     }
 
-    private fun initCard(){
+    private fun initCards(){
         val card = layoutInflater.inflate(R.layout.emotion_card, binding.emotionsList, false)
         val card1 = layoutInflater.inflate(R.layout.emotion_card, binding.emotionsList, false)
         val card2 = layoutInflater.inflate(R.layout.emotion_card, binding.emotionsList, false)
         val card3 = layoutInflater.inflate(R.layout.emotion_card, binding.emotionsList, false)
 
-        activity?.let {
-            card.background = it.getDrawable(R.drawable.card_shape_blue)
-            card.findViewById<ImageView>(R.id.icon).setImageResource(R.drawable.ic_blue_emote)
-            val emotionType = card.findViewById<TextView>(R.id.emotion_type)
-            emotionType.apply {
-                text = "выгорание"
-                setTextColor(resources.getColor(R.color.blue_text))
-            }
+        editCard(
+            CardData("сегодня, 12:00",
+                "выгорание",
+                R.color.blue_text,
+                R.drawable.card_shape_blue,
+                R.drawable.ic_blue_emote), card)
 
-            card1.background = it.getDrawable(R.drawable.card_shape_green)
-            card1.findViewById<ImageView>(R.id.icon).setImageResource(R.drawable.ic_green_emote)
-            val emotionType1 = card1.findViewById<TextView>(R.id.emotion_type)
-            emotionType1.apply {
-                text = "спокойствие"
-                setTextColor(resources.getColor(R.color.green_text))
-            }
+        editCard(
+            CardData("сегодня, 10:45",
+                "спокойствие",
+                R.color.green_text,
+                R.drawable.card_shape_green,
+                R.drawable.ic_green_emote), card1)
 
-            card2.background = it.getDrawable(R.drawable.card_shape_yellow)
-            card2.findViewById<ImageView>(R.id.icon).setImageResource(R.drawable.ic_yellow_emote)
-            val emotionType2 = card2.findViewById<TextView>(R.id.emotion_type)
-            emotionType2.apply {
-                text = "продуктивность"
-                setTextColor(resources.getColor(R.color.yellow_text))
-            }
+        editCard(
+            CardData("вчера, 23:11",
+                "продуктивность",
+                R.color.yellow_text,
+                R.drawable.card_shape_yellow,
+                R.drawable.ic_yellow_emote), card2)
 
-            card3.background = it.getDrawable(R.drawable.card_shape_red)
-            card3.findViewById<ImageView>(R.id.icon).setImageResource(R.drawable.ic_red_emote)
-            val emotionType3 = card3.findViewById<TextView>(R.id.emotion_type)
-            emotionType3.apply {
-                text = "беспокойство"
-                setTextColor(resources.getColor(R.color.red_text))
-            }
+        editCard(
+            CardData("вчера, 11:11",
+                "выгорание",
+                R.color.red_text,
+                R.drawable.card_shape_red,
+                R.drawable.ic_red_emote), card3)
+    }
+
+    private fun editCard(card: CardData, cardView:View){
+        cardView.background = resources.getDrawable(card.backgroundDrawable)
+        cardView.findViewById<ImageView>(R.id.icon).setImageResource(card.icon)
+        cardView.findViewById<TextView>(R.id.date).text = card.date
+        val emotionType = cardView.findViewById<TextView>(R.id.emotion_type)
+        emotionType.apply {
+            text = card.emoteText
+            setTextColor(resources.getColor(card.textColor))
         }
 
-        binding.emotionsList.addView(card)
-        binding.emotionsList.addView(card1)
-        binding.emotionsList.addView(card2)
-        binding.emotionsList.addView(card3)
-
-        binding.addBtn.setOnClickListener {
-            startActivity(Intent(context, AddNoteActivity::class.java))
+        cardView.setOnClickListener {
+            startActivity(Intent(requireContext(), AddNoteDetailsActivity::class.java).apply {
+                putExtra("card", card)
+            })
         }
+
+        binding.emotionsList.addView(cardView)
     }
 }

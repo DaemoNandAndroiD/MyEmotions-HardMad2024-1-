@@ -19,41 +19,159 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
+    <!--<com.example.hardmad2024_1.utilities.WScrollView
+        android:id="@+id/hsv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backButton"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <HorizontalScrollView
+            android:id="@+id/sv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="700dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:overScrollMode="never"
+                    android:scrollbars="none" />
+            </FrameLayout>
+
+
+        </HorizontalScrollView>
+    </com.example.hardmad2024_1.utilities.WScrollView>-->
+
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/zoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
+        android:scrollbars="none"
+        app:transformation="none"
+        app:transformationGravity="center_horizontal|center_vertical"
+        app:alignment="center"
+        app:horizontalPanEnabled="true"
+        app:verticalPanEnabled="true"
+        app:overScrollHorizontal="true"
+        app:overScrollVertical="true"
+        app:overPinchable="true"
+        app:zoomEnabled="true"
+        app:flingEnabled="true"
+        app:scrollEnabled="true"
+        app:oneFingerScrollEnabled="true"
+        app:twoFingersScrollEnabled="true"
+        app:threeFingersScrollEnabled="true"
+        app:minZoom="0.5"
+        app:minZoomType="zoom"
+        app:maxZoom="2"
+        app:maxZoomType="zoom"
+        app:animationDuration="280"
+        app:hasClickableChildren="true">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+        </FrameLayout>
+
+    </com.otaliastudios.zoom.ZoomLayout>
+
+
+
+
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/blue_often_stat"
         android:backgroundTint="#2C2C2E"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="48dp"
-        android:layout_marginHorizontal="24dp">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/emotionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/base_add_note_text"
-            android:textColor="@color/white"
-            android:fontFamily="@font/velasans_regular"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/emotionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_text"
+                android:textSize="12sp"
+                android:fontFamily="@font/velasans_bold"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"></TextView>
+
+            <TextView
+                android:id="@+id/emotionDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:maxLines="4"
+                android:textSize="12sp"
+                android:fontFamily="@font/velasans_regular"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"></TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/defaultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/velasans_regular"
+            android:text="@string/base_add_note_text"
+            android:textColor="@color/white"
             android:textSize="12sp"
-            android:layout_weight="1">
-        </TextView>
+            android:visibility="visible"
+            ></TextView>
 
         <ImageButton
             android:id="@+id/detailsBtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginRight="8dp"
             android:background="@drawable/blue_circle_stat"
             android:backgroundTint="#666666"
-            android:src="@drawable/ic_forward"
-            android:layout_marginRight="8dp"
-            android:layout_marginVertical="8dp">
-        </ImageButton>
+            android:src="@drawable/ic_forward"></ImageButton>
 
     </LinearLayout>
 

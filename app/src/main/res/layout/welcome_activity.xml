@@ -12,8 +12,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"></View>
+
+
+    <!--<View
+        android:id="@+id/greenView"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/green_gradient_circle"
+        app:layout_constraintTop_toTopOf="parent"></View>
+
+    <View
+        android:id="@+id/blueView"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/blue_gradient_circle"
+        app:layout_constraintTop_toTopOf="parent"></View>
+
+    <View
+        android:id="@+id/redView"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        ></View>
+        android:background="@drawable/red_gradient_circle"
+        app:layout_constraintEnd_toEndOf="parent"></View>
+
+    <View
+        android:id="@+id/yellowView"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/yellow_gradient_circle"></View>-->
 
     <TextView
         android:id="@+id/greet_text"

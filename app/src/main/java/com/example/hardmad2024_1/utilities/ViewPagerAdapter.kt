@@ -7,16 +7,16 @@ import com.example.hardmad2024_1.GeneralStatisticsFragment
 import com.example.hardmad2024_1.OftenStatisticsFragment
 import com.example.hardmad2024_1.WeekStatisticsFragment
 
-class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class ViewPagerAdapter(fragment: Fragment, private val data: VerticalFragmentData) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 4
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> GeneralStatisticsFragment()
-            1 -> WeekStatisticsFragment()
-            2-> OftenStatisticsFragment()
-            3-> DuringDayStatisticsFragment()
-            else -> DuringDayStatisticsFragment()
+            0 -> GeneralStatisticsFragment.createNewInstance(data.generalData)
+            1 -> WeekStatisticsFragment.createNewInstance(data.weekStatisticsData)
+            2-> OftenStatisticsFragment.createNewInstance(data.oftenStatisticsData)
+            3-> DuringDayStatisticsFragment.createNewInstance(data.duringDayStatisticsData)
+            else -> DuringDayStatisticsFragment.createNewInstance(data.duringDayStatisticsData)
         }
     }
 }

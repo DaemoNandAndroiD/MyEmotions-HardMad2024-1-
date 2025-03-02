@@ -26,10 +26,10 @@
             android:textSize="36sp"></TextView>
 
         <TextView
+            android:id="@+id/recordsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/velasans_regular"
-            android:text="5 записей"
             android:textColor="@color/white"
             android:textSize="20sp">
         </TextView>

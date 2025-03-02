@@ -1,11 +1,8 @@
 package com.example.hardmad2024_1
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.TypedValue
-import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -18,12 +15,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.marginRight
 import androidx.core.view.size
 import com.example.hardmad2024_1.databinding.AddNoteDetailsActivityBinding
 import com.example.hardmad2024_1.utilities.CardData
 import com.example.hardmad2024_1.utilities.toPx
-import org.w3c.dom.Text
 
 class AddNoteDetailsActivity:ComponentActivity() {
     private lateinit var binding:AddNoteDetailsActivityBinding
@@ -49,6 +44,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
         binding.saveBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            intent.putExtra("isEmpty", false)
             startActivity(intent)
         }
 
@@ -56,12 +52,12 @@ class AddNoteDetailsActivity:ComponentActivity() {
             editCard(it, binding.card)
         }
 
-        binding.activityContainer.addView(addNewTextView("Приём пищи"), binding.activityContainer.size -2)
-        binding.activityContainer.addView(addNewTextView("Встреча с друзьями"), binding.activityContainer.size -2)
-        binding.activityContainer.addView(addNewTextView("Тренировка"), binding.activityContainer.size -2)
-        binding.activityContainer.addView(addNewTextView("Хобби"), binding.activityContainer.size -2)
-        binding.activityContainer.addView(addNewTextView("Отдых"), binding.activityContainer.size -2)
-        binding.activityContainer.addView(addNewTextView("Поездка"), binding.activityContainer.size -2)
+        binding.activityContainer.addView(createTextView("Приём пищи"), binding.activityContainer.size -2)
+        binding.activityContainer.addView(createTextView("Встреча с друзьями"), binding.activityContainer.size -2)
+        binding.activityContainer.addView(createTextView("Тренировка"), binding.activityContainer.size -2)
+        binding.activityContainer.addView(createTextView("Хобби"), binding.activityContainer.size -2)
+        binding.activityContainer.addView(createTextView("Отдых"), binding.activityContainer.size -2)
+        binding.activityContainer.addView(createTextView("Поездка"), binding.activityContainer.size -2)
 
         binding.addActivityButton.setOnClickListener {
             binding.editTextActivity.visibility = VISIBLE
@@ -69,7 +65,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
 
         binding.editTextActivity.setOnEditorActionListener{ v, keyCode, event ->
             if (keyCode == EditorInfo.IME_ACTION_DONE) {
-                binding.activityContainer.addView(addNewTextView(binding.editTextActivity.text.toString()), binding.activityContainer.size -2)
+                binding.activityContainer.addView(createTextView(binding.editTextActivity.text.toString()), binding.activityContainer.size -2)
                 binding.editTextActivity.visibility = GONE
                 binding.editTextActivity.text = null
                 true
@@ -78,12 +74,12 @@ class AddNoteDetailsActivity:ComponentActivity() {
             false
         }
 
-        binding.humanContainer.addView(addNewTextView("Один"), binding.humanContainer.size -2)
-        binding.humanContainer.addView(addNewTextView("Друзья"), binding.humanContainer.size -2)
-        binding.humanContainer.addView(addNewTextView("Семья"), binding.humanContainer.size -2)
-        binding.humanContainer.addView(addNewTextView("Коллеги"), binding.humanContainer.size -2)
-        binding.humanContainer.addView(addNewTextView("Партнёр"), binding.humanContainer.size -2)
-        binding.humanContainer.addView(addNewTextView("Питомцы"), binding.humanContainer.size -2)
+        binding.humanContainer.addView(createTextView("Один"), binding.humanContainer.size -2)
+        binding.humanContainer.addView(createTextView("Друзья"), binding.humanContainer.size -2)
+        binding.humanContainer.addView(createTextView("Семья"), binding.humanContainer.size -2)
+        binding.humanContainer.addView(createTextView("Коллеги"), binding.humanContainer.size -2)
+        binding.humanContainer.addView(createTextView("Партнёр"), binding.humanContainer.size -2)
+        binding.humanContainer.addView(createTextView("Питомцы"), binding.humanContainer.size -2)
 
         binding.addHumanButton.setOnClickListener {
             binding.editTextHuman.visibility = VISIBLE
@@ -91,7 +87,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
 
         binding.editTextHuman.setOnEditorActionListener{ v, keyCode, event ->
             if (keyCode == EditorInfo.IME_ACTION_DONE) {
-                binding.humanContainer.addView(addNewTextView(binding.editTextHuman.text.toString()), binding.humanContainer.size -2)
+                binding.humanContainer.addView(createTextView(binding.editTextHuman.text.toString()), binding.humanContainer.size -2)
                 binding.editTextHuman.visibility = GONE
                 binding.editTextHuman.text = null
                 true
@@ -100,11 +96,11 @@ class AddNoteDetailsActivity:ComponentActivity() {
             false
         }
 
-        binding.placeContainer.addView(addNewTextView("Дом"), binding.placeContainer.size -2)
-        binding.placeContainer.addView(addNewTextView("Работа"), binding.placeContainer.size -2)
-        binding.placeContainer.addView(addNewTextView("Школа"), binding.placeContainer.size -2)
-        binding.placeContainer.addView(addNewTextView("Транспорт"), binding.placeContainer.size -2)
-        binding.placeContainer.addView(addNewTextView("Улица"), binding.placeContainer.size -2)
+        binding.placeContainer.addView(createTextView("Дом"), binding.placeContainer.size -2)
+        binding.placeContainer.addView(createTextView("Работа"), binding.placeContainer.size -2)
+        binding.placeContainer.addView(createTextView("Школа"), binding.placeContainer.size -2)
+        binding.placeContainer.addView(createTextView("Транспорт"), binding.placeContainer.size -2)
+        binding.placeContainer.addView(createTextView("Улица"), binding.placeContainer.size -2)
 
         binding.addPlaceButton.setOnClickListener {
             binding.editTextPlace.visibility = VISIBLE
@@ -112,7 +108,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
 
         binding.editTextPlace.setOnEditorActionListener{ v, keyCode, event ->
             if (keyCode == EditorInfo.IME_ACTION_DONE) {
-                binding.placeContainer.addView(addNewTextView(binding.editTextPlace.text.toString()), binding.placeContainer.size -2)
+                binding.placeContainer.addView(createTextView(binding.editTextPlace.text.toString()), binding.placeContainer.size -2)
                 binding.editTextPlace.visibility = GONE
                 binding.editTextPlace.text = null
                 true
@@ -122,7 +118,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
         }
     }
 
-    private fun addNewTextView(text:String):TextView{
+    private fun createTextView(text:String):TextView{
         val layoutParamsView = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT

@@ -6,6 +6,7 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -34,7 +35,9 @@ class WelcomeActivity : ComponentActivity() {
         startGradientAnimation()
 
         binding.googleButton.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -42,14 +45,14 @@ class WelcomeActivity : ComponentActivity() {
         val view = binding.gradientView
 
         val animatorX = ObjectAnimator.ofFloat(view, "translationX", -100f, 100f).apply {
-            duration = 5000
+            duration = 3000
             repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.REVERSE
             interpolator = LinearInterpolator()
         }
 
         val animatorY = ObjectAnimator.ofFloat(view, "translationY", -100f, 100f).apply {
-            duration = 5000
+            duration = 3000
             repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.REVERSE
             interpolator = LinearInterpolator()
@@ -60,4 +63,32 @@ class WelcomeActivity : ComponentActivity() {
             start()
         }
     }
+
+    /*private fun startGradientAnimation() {
+        animateCorner(binding.greenView, 0f, 0f, 100f, 100f)
+        animateCorner(binding.blueView, 100f, 0f, -100f, 100f)
+        animateCorner(binding.redView, 100f, 100f, -100f, -100f)
+        animateCorner(binding.yellowView, -100f, 100f, 100f, -100f)
+    }
+
+    private fun animateCorner(view: View, startX: Float, startY: Float, endX: Float, endY: Float) {
+        val animatorX = ObjectAnimator.ofFloat(view, "translationX", startX, endX).apply {
+            duration = 5000
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.REVERSE
+            interpolator = LinearInterpolator()
+        }
+
+        val animatorY = ObjectAnimator.ofFloat(view, "translationY", startY, endY).apply {
+            duration = 5000
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.REVERSE
+            interpolator = LinearInterpolator()
+        }
+
+        AnimatorSet().apply {
+            playTogether(animatorX, animatorY)
+            start()
+        }
+    }*/
 }

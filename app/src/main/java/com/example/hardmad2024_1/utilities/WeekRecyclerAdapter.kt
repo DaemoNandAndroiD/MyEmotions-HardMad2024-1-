@@ -1,5 +1,7 @@
 package com.example.hardmad2024_1.utilities
 
+import android.content.Context
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hardmad2024_1.R
 import com.google.android.flexbox.FlexboxLayout
 
-class WeekRecyclerAdapter(val elements:List<DayOfWeek>) :RecyclerView.Adapter<WeekRecyclerAdapter.WeekViewHolder>() {
+class WeekRecyclerAdapter(val context: Context, private val elements:Array<WeekStatisticsData>) :RecyclerView.Adapter<WeekRecyclerAdapter.WeekViewHolder>() {
 
     class WeekViewHolder(view: View):RecyclerView.ViewHolder(view){
         val dayOfWeekText = view.findViewById<TextView>(R.id.day_of_week)
@@ -35,8 +37,8 @@ class WeekRecyclerAdapter(val elements:List<DayOfWeek>) :RecyclerView.Adapter<We
         holder.dateText.text = elements[position].date
         holder.dayOfWeekText.text = elements[position].dayOfWeek
 
-        repeat(elements[position].emotionsTextViews.size){
-            holder.emotionsContainer.addView(elements[position].emotionsTextViews[it])
+        repeat(elements[position].emotionsTexts.size){
+            holder.emotionsContainer.addView(createTextView(elements[position].emotionsTexts[it]))
         }
 
         if(elements[position].icons.isNotEmpty()){
@@ -44,7 +46,34 @@ class WeekRecyclerAdapter(val elements:List<DayOfWeek>) :RecyclerView.Adapter<We
         }
 
         repeat(elements[position].icons.size){
-            holder.iconContainer.addView(elements[position].icons[it])
+            holder.iconContainer.addView(createImageView(elements[position].icons[it]))
+        }
+    }
+
+    private fun createTextView(text:String):TextView{
+        return TextView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            setTextColor(resources.getColor(R.color.white))
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12F)
+            typeface = resources.getFont(R.font.velasans_regular)
+            setText(text)
+        }
+    }
+
+    private fun createImageView(drawable:Int): ImageView {
+        val layoutParameters = LinearLayout.LayoutParams(
+            40.toPx(context),
+            40.toPx(context)
+        )
+
+        layoutParameters.setMargins(0,0, 4.toPx(context), 4.toPx(context))
+
+        return ImageView(context).apply {
+            layoutParams = layoutParameters
+            setImageResource(drawable)
         }
     }
 }

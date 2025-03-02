@@ -1,27 +1,46 @@
 package com.example.hardmad2024_1
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.hardmad2024_1.databinding.StatisticsGeneralBinding
-import com.example.hardmad2024_1.utilities.toPx
+import com.example.hardmad2024_1.utilities.GeneralStatisticsData
 import kotlin.math.sqrt
 
 class GeneralStatisticsFragment:Fragment(R.layout.statistics_general) {
     private lateinit var binding:StatisticsGeneralBinding
+    private var data: GeneralStatisticsData = GeneralStatisticsData()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.getParcelable<GeneralStatisticsData>(BUNDLE_KEY).let {
+            if (it != null){
+                data = it
+            }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = StatisticsGeneralBinding.bind(view)
-
-        setupStat()
+        binding.recordsCount.text = resources.getQuantityString(R.plurals.records,data.recordsCount,data.recordsCount)
+        setupStat(data.percentagesList)
     }
 
-    private fun setupStat(){
-        var percentages = listOf(50f, 20f, 30f)
-        percentages = percentages.sortedDescending()
+    companion object{
+        private const val BUNDLE_KEY = "GENERAL_FRAGMENT_DATA"
+
+        fun createNewInstance(generalStatisticsData: GeneralStatisticsData):GeneralStatisticsFragment{
+            return GeneralStatisticsFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(BUNDLE_KEY, generalStatisticsData)
+                }
+            }
+        }
+    }
+
+    private fun setupStat(percentagesArgument: List<Float>){
+        val percentages = percentagesArgument.sortedDescending()
 
         var width:Float = 0f
         var height:Float = 0f

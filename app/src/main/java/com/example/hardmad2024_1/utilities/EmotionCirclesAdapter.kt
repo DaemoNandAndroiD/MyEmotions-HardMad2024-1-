@@ -12,6 +12,7 @@ import com.example.hardmad2024_1.R
 
 class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>, val title: TextView, val desc:TextView, val onClick:()->Unit) :RecyclerView.Adapter<EmotionCirclesAdapter.EmotionViewHolder>() {
     var previousView:View? = null
+    var previousViewIndex:Int? = 0
 
     class EmotionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val parent = view
@@ -36,8 +37,10 @@ class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>,
         holder.parent.setOnClickListener {
             if (previousView != holder.parent) {
                 previousView?.let { animateScale(it, 1f) }
+                previousViewIndex?.let{shiftElements(it, holder, 0f)}
 
                 animateScale(holder.parent, 1.3f)
+                shiftElements(position,holder, 40f)
                 onClick()
 
                 title.text = circles[position].text
@@ -46,10 +49,84 @@ class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>,
                 desc.text = circles[position].hiddenDescription
 
                 previousView = holder.parent
+                previousViewIndex = position
+            }
+        }
+    }
+
+    fun shiftElements(position: Int, holder: EmotionViewHolder, translation:Float){
+        val row = position/4
+        val col = position%4
+
+        val recyclerView = holder.parent.parent as RecyclerView
+
+        var index = position
+
+        while (index + 4 <= 15){
+            index += 4
+            recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
+                animateTranslation(
+                    it, translation, false)
+            }
+        }
+
+        index = position
+
+        while (index - 4 >= 0){
+            index -= 4
+            recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
+                animateTranslation(
+                    it, -translation, false)
+            }
+        }
+
+        index = position
+
+        while ((index - 1)/4 == position/4){
+            index--
+            recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
+                animateTranslation(
+                    it, -translation, true)
+            }
+        }
+
+        index = position
+
+        while ((index + 1)/4 == position/4){
+            index++
+            recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
+                animateTranslation(
+                    it, translation, true)
             }
         }
     }
 }
+
+fun animateTranslation(view: View, translation: Float, isTranslationX:Boolean){
+    if (isTranslationX){
+        ValueAnimator.ofFloat(view.translationX, translation).apply {
+            duration = 200
+            addUpdateListener { animator->
+                val value = animator.animatedValue as Float
+
+                view.translationX = value
+            }
+            start()
+        }
+    }
+    else{
+        ValueAnimator.ofFloat(view.translationY, translation).apply {
+            duration = 200
+            addUpdateListener { animator->
+                val value = animator.animatedValue as Float
+
+                view.translationY = value
+            }
+            start()
+        }
+    }
+}
+
 
 fun animateSize(view: View, mode:Int, context: Context) {
     if (mode == 0){

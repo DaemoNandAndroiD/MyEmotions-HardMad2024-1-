@@ -45,7 +45,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.core)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,18 +58,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-    implementation("com.github.secf4ult:VerticalTabLayout:v0.1.0")
+    implementation(libs.verticaltablayout)
     implementation(libs.flexbox)
-    implementation("com.otaliastudios:zoomlayout:1.9.0")
-    testImplementation(libs.test.core.ktx)
-    androidTestImplementation(libs.test.core.ktx)
-    implementation("androidx.test:core:1.6.1")
-    androidTestImplementation(libs.androidx.runner)
-    androidTestImplementation(libs.androidx.rules)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.truth)
-    androidTestImplementation(libs.androidx.junit)
+    implementation(libs.zoomlayout)
 
+    testImplementation(libs.test.core.ktx)
     testImplementation(libs.androidx.runner)
     testImplementation(libs.androidx.rules)
     testImplementation(libs.androidx.junit)
@@ -80,8 +73,15 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.kaspresso)
-    androidTestUtil("androidx.test:orchestrator:1.5.1")
+    androidTestUtil(libs.androidx.orchestrator)
     androidTestImplementation(libs.fragment.testing)
+    androidTestImplementation(libs.androidx.runner)
+    androidTestImplementation(libs.androidx.rules)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.test.core.ktx)
+    androidTestImplementation(libs.androidx.truth)
+    androidTestImplementation(libs.androidx.junit)
+
     debugImplementation(libs.fragment.testing.manifest)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

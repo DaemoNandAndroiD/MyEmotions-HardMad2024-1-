@@ -1,6 +1,7 @@
 [versions]
 agp = "8.8.0"
 androidxCoreKtx = "1.6.1"
+core = "1.6.1"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -15,12 +16,17 @@ navigation = "2.8.7"
 kaspresso = "1.6.0"
 flexbox = "3.0.0"
 fragment-testing = "1.8.6"
+orchestrator = "1.5.1"
 rules = "1.6.1"
 runner = "1.6.2"
 truth = "1.6.0"
+verticaltablayout = "v0.1.0"
+zoomlayout = "1.9.0"
 
 [libraries]
+androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-orchestrator = { module = "androidx.test:orchestrator", version.ref = "orchestrator" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidx-truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
@@ -46,6 +52,8 @@ flexbox = {group="com.google.android.flexbox", name = "flexbox", version.ref="fl
 fragment-testing-manifest = {group="androidx.fragment", name = "fragment-testing-manifest", version.ref = "fragment-testing"}
 fragment-testing = {group="androidx.fragment", name = "fragment-testing", version.ref = "fragment-testing"}
 test-core-ktx = { module = "androidx.test:core-ktx", version.ref = "androidxCoreKtx" }
+verticaltablayout = { module = "com.github.secf4ult:VerticalTabLayout", version.ref = "verticaltablayout" }
+zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

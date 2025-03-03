@@ -71,6 +71,7 @@
     <string name="calmness_description">ощущение внутреннего мира и гармонии, когда ничего не тревожит</string>
     <string name="security_title">Защищённость</string>
     <string name="security_description">ощущение безопасности, когда ничего не угрожает</string>
+    <string name="add_note_button_text">Добавить запись</string>
 
     <plurals name="days">
         <item quantity="one">%d день</item>

@@ -35,7 +35,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val rectF = RectF(50f, 50f, width.toFloat() -50f, height.toFloat() - 50f)
+        val rectF = RectF(30f, 30f, width.toFloat() -30f, height.toFloat() - 30f)
 
         canvas.drawArc(rectF, 0f, 360f, false, Paint().apply {
             color = Color.parseColor("#1A1A1A")

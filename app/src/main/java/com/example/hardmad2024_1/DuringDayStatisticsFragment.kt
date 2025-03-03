@@ -102,7 +102,7 @@ class DuringDayStatisticsFragment:Fragment(R.layout.statistics_during_day) {
     private fun createStatView(weight:Float, background:Int):LinearLayout{
         val lp = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
-            0
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
         lp.weight = weight

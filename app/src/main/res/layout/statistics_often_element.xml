@@ -34,9 +34,9 @@
     <LinearLayout
         android:layout_marginLeft="8dp"
         android:id="@+id/stat_layout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="0.3"
+        android:layout_weight="1"
         android:gravity="left"
         android:paddingHorizontal="16dp"
         android:background="@drawable/yellow_often_stat">

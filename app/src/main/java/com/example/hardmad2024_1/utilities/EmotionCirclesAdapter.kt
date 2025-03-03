@@ -1,15 +1,16 @@
 package com.example.hardmad2024_1.utilities
 
 import android.animation.ValueAnimator
-import android.graphics.Rect
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hardmad2024_1.R
 
-class EmotionCirclesAdapter(val circles:List<CircleClass>, val title: TextView, val desc:TextView, val onClick:()->Unit) :RecyclerView.Adapter<EmotionCirclesAdapter.EmotionViewHolder>() {
+class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>, val title: TextView, val desc:TextView, val onClick:()->Unit) :RecyclerView.Adapter<EmotionCirclesAdapter.EmotionViewHolder>() {
     var previousView:View? = null
 
     class EmotionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -50,25 +51,42 @@ class EmotionCirclesAdapter(val circles:List<CircleClass>, val title: TextView, 
     }
 }
 
-class EmotionItemDecoration(private val scaleProvider: () -> Int?) : RecyclerView.ItemDecoration() {
+fun animateSize(view: View, mode:Int, context: Context) {
+    if (mode == 0){
+        ValueAnimator.ofFloat(view.width.toFloat(), 112.toPx(context).toFloat()).apply {
+            duration = 200
+            addUpdateListener { animator ->
+                val value = animator.animatedValue as Float
 
-    override fun getItemOffsets(
-        outRect: Rect,
-        view: View,
-        parent: RecyclerView,
-        state: RecyclerView.State
-    ) {
-        val position = parent.getChildAdapterPosition(view)
-        val selectedPosition = scaleProvider()
+                val lp = view.layoutParams
+                lp.width = value.toInt()
+                lp.height = value.toInt()
 
-        val margin = if (position == selectedPosition) 60 else 20
-        outRect.set(margin, margin, margin, margin)
+                view.layoutParams = lp
+            }
+            start()
+        }
+    }
+    else{
+        ValueAnimator.ofFloat(view.width.toFloat(), 152.toPx(context).toFloat()).apply {
+            duration = 200
+            addUpdateListener { animator ->
+                val value = animator.animatedValue as Float
+
+                val lp = view.layoutParams
+                lp.width = value.toInt()
+                lp.height = value.toInt()
+
+                view.layoutParams = lp
+            }
+            start()
+        }
     }
 }
 
 fun animateScale(view: View, scale: Float) {
     ValueAnimator.ofFloat(view.scaleX, scale).apply {
-        duration = 100
+        duration = 200
         addUpdateListener { animator ->
             val value = animator.animatedValue as Float
             view.scaleX = value

@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CardData(
+data class JournalFragmentData(
     val date:String,
     val emoteText:String,
     val textColor:Int,

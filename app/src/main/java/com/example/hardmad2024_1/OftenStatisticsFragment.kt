@@ -8,7 +8,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardmad2024_1.databinding.StatisticsOftenBinding
+import com.example.hardmad2024_1.utilities.OftenElementsAdapter
 import com.example.hardmad2024_1.utilities.OftenStatisticsData
 
 class OftenStatisticsFragment:Fragment(R.layout.statistics_often) {
@@ -27,14 +29,12 @@ class OftenStatisticsFragment:Fragment(R.layout.statistics_often) {
 
         binding = StatisticsOftenBinding.bind(view)
 
-        repeat(data.size){
-            addNewStatElement(
-                data[it].emoteText,
-                data[it].percent,
-                data[it].emotionCount,
-                data[it].icon,
-                data[it].drawable
-            )
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val adapter = OftenElementsAdapter(data.toList(), resources)
+
+        binding.emotionsContainer.apply {
+            this.layoutManager = layoutManager
+            this.adapter = adapter
         }
     }
 
@@ -48,22 +48,6 @@ class OftenStatisticsFragment:Fragment(R.layout.statistics_often) {
                 }
             }
         }
-    }
-
-    private fun addNewStatElement(emoteText:String, weight:Float, emotionsCount:Int, emotionDrawable:Int, layoutDrawable: Int){
-        val statElement = layoutInflater.inflate(R.layout.statistics_often_element, binding.emotionsContainer, false)
-        statElement.findViewById<TextView>(R.id.emoteText).text = emoteText
-        statElement.findViewById<ImageView>(R.id.icon).setImageResource(emotionDrawable)
-
-        val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
-        lp.weight = weight
-
-        statElement.findViewById<TextView>(R.id.emotion_count).text = emotionsCount.toString()
-
-        statElement.findViewById<LinearLayout>(R.id.stat_layout).layoutParams = lp
-        statElement.findViewById<LinearLayout>(R.id.stat_layout).minimumWidth = calcMinWidth()
-        statElement.findViewById<LinearLayout>(R.id.stat_layout).background = resources.getDrawable(layoutDrawable)
-        binding.emotionsContainer.addView(statElement)
     }
 
     private fun calcMinWidth() :Int{

@@ -1,32 +1,19 @@
 package com.example.hardmad2024_1
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
 import android.view.View.GONE
-import android.view.View.OnScrollChangeListener
 import android.view.View.VISIBLE
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.LinearLayout.LayoutParams
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.constraintlayout.widget.ConstraintSet.Motion
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.hardmad2024_1.databinding.AddNoteActivityBinding
-import com.example.hardmad2024_1.utilities.CardData
+import com.example.hardmad2024_1.utilities.JournalFragmentData
 import com.example.hardmad2024_1.utilities.CircleClass
 import com.example.hardmad2024_1.utilities.EmotionCirclesAdapter
-import com.example.hardmad2024_1.utilities.EmotionItemDecoration
-import com.example.hardmad2024_1.utilities.WScrollView
-import com.example.hardmad2024_1.utilities.animateScale
-import com.example.hardmad2024_1.utilities.toPx
 import java.time.LocalTime
 
 
@@ -75,7 +62,7 @@ class AddNoteActivity:ComponentActivity() {
 
             startActivity(Intent(this, AddNoteDetailsActivity::class.java)
                 .putExtra("card",
-                    CardData(
+                    JournalFragmentData(
                         date = "сегодня, " + String.format("%02d",LocalTime.now().hour) + ":" + String.format("%02d",LocalTime.now().minute),
                         emoteText = binding.emotionTitle.text.toString().toLowerCase(),
                         textColor = resources[0],
@@ -87,9 +74,9 @@ class AddNoteActivity:ComponentActivity() {
 
 
         val recyclerView = binding.recyclerView
-        val layoutManager = GridLayoutManager(this,4, GridLayoutManager.VERTICAL, false)
+        val layoutManager = GridLayoutManager(this, 4)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = EmotionCirclesAdapter(listOf(
+        recyclerView.adapter = EmotionCirclesAdapter(this,listOf(
             CircleClass(resources.getColorStateList(R.color.gradient_red),
                 getString(R.string.rage_title), getString(R.string.rage_description)),
         CircleClass(resources.getColorStateList(R.color.gradient_red),
@@ -131,17 +118,9 @@ class AddNoteActivity:ComponentActivity() {
                 setImageResource(R.drawable.ic_forward_black)
                 backgroundTintList = resources.getColorStateList(R.color.white)
             }
-
-            recyclerView.invalidateItemDecorations()
         }
 
-        val itemDecoration = EmotionItemDecoration { null }
-        recyclerView.addItemDecoration(itemDecoration)
-
-
-        var currentScaledView:View? = null
-
-        binding.zoomLayout.setOnTouchListener{view, event->
+        /*binding.zoomLayout.setOnTouchListener{view, event->
             if (event.action == MotionEvent.ACTION_MOVE) {
                 val closestIndex = (layoutManager.findFirstVisibleItemPosition() - layoutManager.findLastVisibleItemPosition()) / 2
 
@@ -156,6 +135,6 @@ class AddNoteActivity:ComponentActivity() {
             }
 
             false
-        }
+        }*/
     }
 }

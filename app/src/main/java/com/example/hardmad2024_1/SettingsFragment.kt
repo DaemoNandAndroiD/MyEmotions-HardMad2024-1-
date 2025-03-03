@@ -31,7 +31,7 @@ class SettingsFragment: Fragment(R.layout.settings_fragment) {
         val recyclerView = binding.notificationsContainer
 
         val layoutManager = LinearLayoutManager(context)
-        val adapter= NotificationRecyclerAdapter()
+        val adapter = NotificationRecyclerAdapter()
 
         recyclerView.apply {
             this.layoutManager = layoutManager

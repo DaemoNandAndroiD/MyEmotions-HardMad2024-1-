@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.size
 import com.example.hardmad2024_1.databinding.AddNoteDetailsActivityBinding
-import com.example.hardmad2024_1.utilities.CardData
+import com.example.hardmad2024_1.utilities.JournalFragmentData
 import com.example.hardmad2024_1.utilities.toPx
 
 class AddNoteDetailsActivity:ComponentActivity() {
@@ -26,7 +26,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val card = intent.getParcelableExtra<CardData>("card")
+        val card = intent.getParcelableExtra<JournalFragmentData>("card")
 
         binding = AddNoteDetailsActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -152,7 +152,7 @@ class AddNoteDetailsActivity:ComponentActivity() {
         return textView
     }
 
-    private fun editCard(card: CardData, cardView: View){
+    private fun editCard(card: JournalFragmentData, cardView: View){
         cardView.background = resources.getDrawable(card.backgroundDrawable)
         cardView.findViewById<TextView>(R.id.date).text = card.date
         cardView.findViewById<ImageView>(R.id.icon).setImageResource(card.icon)

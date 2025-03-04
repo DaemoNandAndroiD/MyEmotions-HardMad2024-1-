@@ -136,7 +136,7 @@
                 android:fontFamily="@font/velasans_bold"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="16dp"
-                android:layout_weight="1"></TextView>
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/emotionDescription"
@@ -148,7 +148,7 @@
                 android:fontFamily="@font/velasans_regular"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="16dp"
-                android:layout_weight="1"></TextView>
+                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
@@ -163,8 +163,7 @@
             android:text="@string/base_add_note_text"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:visibility="visible"
-            ></TextView>
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/detailsBtn"
@@ -174,7 +173,7 @@
             android:layout_marginRight="8dp"
             android:background="@drawable/blue_circle_stat"
             android:backgroundTint="#666666"
-            android:src="@drawable/ic_forward"></ImageButton>
+            android:src="@drawable/ic_forward"/>
 
     </LinearLayout>
 

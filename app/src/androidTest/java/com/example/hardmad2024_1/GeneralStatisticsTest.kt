@@ -1,15 +1,12 @@
 package com.example.hardmad2024_1
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentFactory
 import androidx.fragment.app.testing.FragmentScenario
-import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.hardmad2024_1.presentation.fragments.GeneralStatisticsFragment
 import com.example.hardmad2024_1.screens.GeneralStatisticsScreen
-import com.example.hardmad2024_1.utilities.GeneralStatisticsData
+import com.example.hardmad2024_1.presentation.util.classes.GeneralStatisticsData
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 
 @RunWith(AndroidJUnit4::class)
 class GeneralStatisticsTest {
@@ -53,6 +50,12 @@ class GeneralStatisticsTest {
         launchFragment(GeneralStatisticsData())
 
         GeneralStatisticsScreen{
+            title{
+                isVisible()
+                isDisplayed()
+                hasText(R.string.stat_general_title)
+            }
+
             recordsCount{
                 isVisible()
                 hasText("0 записей")
@@ -76,7 +79,7 @@ class GeneralStatisticsTest {
         }
     }
 
-    private fun launchFragment(data:GeneralStatisticsData){
+    private fun launchFragment(data: GeneralStatisticsData){
         val fragment = GeneralStatisticsFragment.createNewInstance(data)
 
         FragmentScenario.launchInContainer(

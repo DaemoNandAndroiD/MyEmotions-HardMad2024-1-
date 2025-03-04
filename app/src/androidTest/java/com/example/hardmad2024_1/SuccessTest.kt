@@ -1,15 +1,20 @@
 package com.example.hardmad2024_1
 
-import android.util.Log
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.hardmad2024_1.presentation.activities.WelcomeActivity
 import com.example.hardmad2024_1.screens.AddNoteDetailsScreen
 import com.example.hardmad2024_1.screens.AddNoteScreen
 import com.example.hardmad2024_1.screens.GridItem
 import com.example.hardmad2024_1.screens.JournalScreen
 import com.example.hardmad2024_1.screens.MainScreen
 import com.example.hardmad2024_1.screens.NotificationItem
+import com.example.hardmad2024_1.screens.OftenStatisticsScreen
+import com.example.hardmad2024_1.screens.PagerItem
+import com.example.hardmad2024_1.screens.RecordsItem
 import com.example.hardmad2024_1.screens.SettingsScreen
+import com.example.hardmad2024_1.screens.StatisticsScreen
+import com.example.hardmad2024_1.screens.VerticalFragmentScreen
 import com.example.hardmad2024_1.screens.WelcomeScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
@@ -46,7 +51,7 @@ class SuccessTest : TestCase() {
             detailsBtn.click()
             emotionTitle.isNotDisplayed()
 
-            gridRV.childAt<GridItem>(1){
+            gridRV.childAt<GridItem>(5){
                 click()
             }
 
@@ -56,13 +61,20 @@ class SuccessTest : TestCase() {
         }
 
         AddNoteDetailsScreen{
-            saveBtn.click()
+            flakySafely {  saveBtn.click()}
         }
 
         JournalScreen{
             progressBarEmpty{
                 isNotDisplayed()
             }
+            emotionsList.childAt<RecordsItem>(0){
+                click()
+            }
+        }
+
+        AddNoteDetailsScreen{
+            backBtn.click()
         }
 
         MainScreen{
@@ -87,6 +99,18 @@ class SuccessTest : TestCase() {
 
         MainScreen{
             navigateToStatistics()
+        }
+
+        StatisticsScreen{
+            viewPager{
+                swipeUp()
+                swipeUp()
+                swipeUp()
+                swipeUp()
+                swipeDown()
+                swipeLeft()
+                swipeLeft()
+            }
         }
     }
 }

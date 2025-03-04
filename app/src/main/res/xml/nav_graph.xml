@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/nav_journal"
         app:defaultNavHost="true"
-        android:name="com.example.hardmad2024_1.JournalFragment"
+        android:name="com.example.hardmad2024_1.presentation.fragments.JournalFragment"
         tools:layout="@layout/journal_fragment"/>
 
     <fragment
         android:id="@+id/nav_statistics"
         app:defaultNavHost="true"
-        android:name="com.example.hardmad2024_1.StatisticsFragment"
+        android:name="com.example.hardmad2024_1.presentation.fragments.StatisticsFragment"
         tools:layout="@layout/statistics_fragment"/>
 
     <fragment
         android:id="@+id/nav_settings"
         app:defaultNavHost="true"
-        android:name="com.example.hardmad2024_1.SettingsFragment"
+        android:name="com.example.hardmad2024_1.presentation.fragments.SettingsFragment"
         tools:layout="@layout/settings_fragment"/>
 
 </navigation>

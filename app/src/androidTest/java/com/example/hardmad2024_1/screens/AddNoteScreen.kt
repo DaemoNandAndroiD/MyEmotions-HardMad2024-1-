@@ -1,8 +1,7 @@
 package com.example.hardmad2024_1.screens
 
 import android.view.View
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import com.example.hardmad2024_1.AddNoteActivity
+import com.example.hardmad2024_1.presentation.activities.AddNoteActivity
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
@@ -16,8 +15,20 @@ object AddNoteScreen : KScreen<AddNoteScreen>() {
         withId(R.id.detailsBtn)
     }
 
+    val backBtn = KButton{
+        withId(R.id.backButton)
+    }
+
+    val defaultText = KTextView{
+        withId(R.id.defaultText)
+    }
+
     val emotionTitle = KTextView{
         withId(R.id.emotionTitle)
+    }
+
+    val emotionDescription = KTextView{
+        withId(R.id.emotionDescription)
     }
 
     val gridRV = KRecyclerView(

@@ -25,16 +25,17 @@
             android:background="@drawable/blue_often_stat"
             android:backgroundTint="#2C2C2E"
             android:src="@drawable/ic_back"
-            app:layout_constraintHorizontal_bias="0.0"></ImageButton>
+            app:layout_constraintHorizontal_bias="0.0"/>
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/gwen_trial_regular"
             android:text="@string/note_details_title"
             android:textColor="@color/white"
-            android:textSize="24sp"></TextView>
+            android:textSize="24sp"/>
     </LinearLayout>
 
 
@@ -91,16 +92,16 @@
                     android:fontFamily="@font/velasans_medium"
                     android:text="@string/card_title"
                     android:textColor="@color/white"
-                    android:textSize="20sp"></TextView>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/emotion_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gwen_trial_bold"
-                    android:text="усталость"
+                    android:text="@string/depression_title"
                     android:textColor="@color/blue_text"
-                    android:textSize="28sp"></TextView>
+                    android:textSize="28sp"/>
             </LinearLayout>
 
             <ImageView
@@ -112,7 +113,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"></ImageView>
+                app:layout_constraintVertical_bias="1.0"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,12 +137,13 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/note_activity_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/velasans_medium"
                     android:text="@string/note_Activity_title"
                     android:textColor="@color/white"
-                    android:textSize="16dp"></TextView>
+                    android:textSize="16sp"/>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/activity_container"
@@ -168,7 +170,7 @@
                         android:paddingVertical="8dp"
                         android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:visibility="gone"></EditText>
+                        android:visibility="gone"/>
 
                     <ImageButton
                         android:id="@+id/addActivityButton"
@@ -178,7 +180,7 @@
                         android:backgroundTint="#2C2C2E"
                         android:padding="10dp"
                         android:src="@drawable/ic_small_add"
-                        app:layout_constraintHorizontal_bias="0.0"></ImageButton>
+                        app:layout_constraintHorizontal_bias="0.0"/>
 
                 </com.google.android.flexbox.FlexboxLayout>
             </LinearLayout>
@@ -190,12 +192,13 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/note_human_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/velasans_medium"
                     android:text="@string/human_title"
                     android:textColor="@color/white"
-                    android:textSize="16dp"></TextView>
+                    android:textSize="16sp"/>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/human_container"
@@ -222,7 +225,7 @@
                         android:paddingVertical="8dp"
                         android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:visibility="gone"></EditText>
+                        android:visibility="gone"/>
 
                     <ImageButton
                         android:id="@+id/addHumanButton"
@@ -232,7 +235,7 @@
                         android:backgroundTint="#2C2C2E"
                         android:padding="10dp"
                         android:src="@drawable/ic_small_add"
-                        app:layout_constraintHorizontal_bias="0.0"></ImageButton>
+                        app:layout_constraintHorizontal_bias="0.0"/>
 
                 </com.google.android.flexbox.FlexboxLayout>
             </LinearLayout>
@@ -244,12 +247,13 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/note_place_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/velasans_medium"
                     android:text="@string/place_title"
                     android:textColor="@color/white"
-                    android:textSize="16dp"></TextView>
+                    android:textSize="16sp"/>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/place_container"
@@ -276,7 +280,7 @@
                         android:paddingVertical="8dp"
                         android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:visibility="gone"></EditText>
+                        android:visibility="gone"/>
 
                     <ImageButton
                         android:id="@+id/addPlaceButton"
@@ -286,7 +290,7 @@
                         android:backgroundTint="#2C2C2E"
                         android:padding="10dp"
                         android:src="@drawable/ic_small_add"
-                        app:layout_constraintHorizontal_bias="0.0"></ImageButton>
+                        app:layout_constraintHorizontal_bias="0.0"/>
 
                 </com.google.android.flexbox.FlexboxLayout>
             </LinearLayout>

@@ -1,13 +1,17 @@
 package com.example.hardmad2024_1.screens
 
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.WelcomeActivity
+import com.example.hardmad2024_1.presentation.activities.WelcomeActivity
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.text.KButton
+import io.github.kakaocup.kakao.text.KTextView
 
 object WelcomeScreen : KScreen<WelcomeScreen>() {
+    val greetText = KTextView{
+        withId(R.id.greet_text)
+    }
 
-    private val enterBtn = KButton{
+    val enterBtn = KButton{
         withId(R.id.googleButton)
     }
 

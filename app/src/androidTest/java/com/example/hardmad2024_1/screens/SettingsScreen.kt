@@ -2,7 +2,7 @@ package com.example.hardmad2024_1.screens
 
 import android.view.View
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.SettingsFragment
+import com.example.hardmad2024_1.presentation.fragments.SettingsFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
@@ -14,27 +14,27 @@ import org.hamcrest.Matcher
 
 object SettingsScreen: KScreen<SettingsScreen>() {
 
-    private val greetTextView = KTextView{
+    val greetTextView = KTextView{
         withId(R.id.greet_text)
     }
 
-    private val avatarImageView = KImageView{
+    val avatarImageView = KImageView{
         withId(R.id.avatar)
     }
 
-    private val nameTextView = KTextView{
+    val nameTextView = KTextView{
         withId(R.id.name)
     }
 
-    private val notificationIcon = KImageView{
+    val notificationIcon = KImageView{
         withId(R.id.send_notification_icon)
     }
 
-    private val notificationTextView = KTextView{
+    val notificationTextView = KTextView{
         withId(R.id.send_notification_text)
     }
 
-    private val notificationSwitch = KSwitch{
+    val notificationSwitch = KSwitch{
         withId(R.id.send_notification_switcher)
     }
 
@@ -49,19 +49,19 @@ object SettingsScreen: KScreen<SettingsScreen>() {
         withId(R.id.add_notification)
     }
 
-    private val fingerprintIcon = KImageView{
+    val fingerprintIcon = KImageView{
         withId(R.id.fingerprint_icon)
     }
 
-    private val fingerprintTextView = KTextView{
+    val fingerprintTextView = KTextView{
         withId(R.id.fingerprint_text)
     }
 
-    private val fingerprintSwitch = KSwitch{
+    val fingerprintSwitch = KSwitch{
         withId(R.id.fingerprint_switcher)
     }
 
-    private val bottomSheetButton = KButton{
+    val bottomSheetButton = KButton{
         withId(R.id.saveBtn)
     }
 

@@ -1,11 +1,15 @@
 package com.example.hardmad2024_1.screens
 
-import com.example.hardmad2024_1.GeneralStatisticsFragment
+import com.example.hardmad2024_1.presentation.fragments.GeneralStatisticsFragment
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.text.KTextView
 
 object GeneralStatisticsScreen : KScreen<GeneralStatisticsScreen>() {
+    val title = KTextView{
+        withId(R.id.title)
+    }
+
     val circleTextView1 = KTextView{
         withId(R.id.circle_text1)
     }

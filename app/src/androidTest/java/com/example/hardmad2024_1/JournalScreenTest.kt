@@ -1,10 +1,11 @@
 package com.example.hardmad2024_1
 
 import androidx.fragment.app.testing.FragmentScenario
-import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.hardmad2024_1.presentation.fragments.JournalFragment
 import com.example.hardmad2024_1.screens.JournalScreen
-import com.example.hardmad2024_1.utilities.JournalFragmentData
+import com.example.hardmad2024_1.presentation.util.classes.JournalFragmentData
+import com.example.hardmad2024_1.screens.RecordsItem
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -15,6 +16,37 @@ class JournalScreenTest{
         launchFragment(arrayOf())
 
         JournalScreen{
+            title{
+                isDisplayed()
+                isVisible()
+                hasText(R.string.journal_title)
+            }
+
+            addBtnText{
+                isDisplayed()
+                isVisible()
+                hasText(R.string.add_note_button_text)
+            }
+
+            records{
+                isDisplayed()
+                isVisible()
+            }
+
+            perDay{
+                isDisplayed()
+                isVisible()
+            }
+
+            streak{
+                isDisplayed()
+                isVisible()
+            }
+
+            progressBarEmpty{
+                isVisible()
+            }
+
             emotionsList.hasSize(0)
         }
     }
@@ -45,6 +77,19 @@ class JournalScreenTest{
 
         JournalScreen{
             emotionsList.hasSize(4)
+            emotionsList.childAt<RecordsItem>(1){
+                dateText{
+                    isVisible()
+                    hasText("сегодня, 10:45")
+                }
+                emotionType{
+                    isVisible()
+                    hasText("спокойствие")
+                }
+                icon{
+                    isVisible()
+                }
+            }
         }
     }
 

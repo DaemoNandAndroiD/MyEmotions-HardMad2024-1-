@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -61,6 +63,18 @@ dependencies {
     implementation(libs.verticaltablayout)
     implementation(libs.flexbox)
     implementation(libs.zoomlayout)
+
+    //serialization
+    implementation(libs.gson)
+
+    //room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.test.core.ktx)
     testImplementation(libs.androidx.runner)

@@ -12,10 +12,12 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.example.hardmad2024_1.databinding.WelcomeActivityBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.cos
 import kotlin.math.sin
 
 
+@AndroidEntryPoint
 class WelcomeActivity : ComponentActivity() {
     private lateinit var binding: WelcomeActivityBinding
 
@@ -26,10 +28,11 @@ class WelcomeActivity : ComponentActivity() {
         binding = WelcomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        WindowCompat.setDecorFitsSystemWindows(window,false)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, binding.root).let { controller ->
             controller.hide(WindowInsetsCompat.Type.navigationBars())
-            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            controller.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
 
         binding.googleButton.setOnClickListener {
@@ -38,16 +41,22 @@ class WelcomeActivity : ComponentActivity() {
             finish()
         }
 
-        val circles = listOf(binding.greenView, binding.blueView, binding.yellowView, binding.redView)
+        val circles =
+            listOf(binding.greenView, binding.blueView, binding.yellowView, binding.redView)
         val angles = listOf(180f, 270f, 0f, 90f)
 
-        repeat(circles.size){
+        repeat(circles.size) {
             circles[it].post {
                 val lp = ConstraintLayout.LayoutParams(
-                    binding.constraintLayout.width*2, binding.constraintLayout.height*2
+                    binding.constraintLayout.width * 2, binding.constraintLayout.height * 2
                 )
 
-                lp.setMargins(-binding.constraintLayout.width,-binding.constraintLayout.height,-binding.constraintLayout.width,-binding.constraintLayout.height)
+                lp.setMargins(
+                    -binding.constraintLayout.width,
+                    -binding.constraintLayout.height,
+                    -binding.constraintLayout.width,
+                    -binding.constraintLayout.height
+                )
 
                 circles[it].layoutParams = lp
                 startCircleAnimation(circles[it], angles[it])
@@ -57,24 +66,25 @@ class WelcomeActivity : ComponentActivity() {
 
     //https://stackoverflow.com/questions/2912779/how-to-calculate-a-point-with-an-given-center-angle-and-radius
     //круги двигаются по кругу вписанному в экран
-    private fun startCircleAnimation(view:View , start:Float){
-        ValueAnimator.ofFloat(0f,360f).apply {
+    private fun startCircleAnimation(view: View, start: Float) {
+        ValueAnimator.ofFloat(0f, 360f).apply {
             duration = 7000
 
-            addUpdateListener {animator->
+            addUpdateListener { animator ->
                 val value = animator.animatedValue as Float
-                val angle = if(start+value>360f) start+value-360f else start+value
+                val angle = if (start + value > 360f) start + value - 360f else start + value
                 //cos*radius + centerCircle
                 //центр смещен за экран
-                view.x = (cos(Math.toRadians(angle.toDouble()))*binding.constraintLayout.width/2 + -binding.constraintLayout.width/2).toFloat()
-                view.y = (sin(Math.toRadians(angle.toDouble()))*binding.constraintLayout.width/2 + -binding.constraintLayout.height/2).toFloat()
+                view.x =
+                    (cos(Math.toRadians(angle.toDouble())) * binding.constraintLayout.width / 2 + -binding.constraintLayout.width / 2).toFloat()
+                view.y =
+                    (sin(Math.toRadians(angle.toDouble())) * binding.constraintLayout.width / 2 + -binding.constraintLayout.height / 2).toFloat()
             }
 
             repeatCount = ValueAnimator.INFINITE
             interpolator = LinearInterpolator()
             start()
         }
-
     }
 
     /*private fun startGradientAnimation() {

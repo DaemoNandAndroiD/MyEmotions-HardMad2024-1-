@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.presentation.util.adapters
+package com.example.hardmad2024_1.presentation.settings_screen.component
 
 import android.view.LayoutInflater
 import android.view.View

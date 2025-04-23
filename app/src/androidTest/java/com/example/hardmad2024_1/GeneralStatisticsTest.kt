@@ -18,7 +18,7 @@ class GeneralStatisticsTest {
         GeneralStatisticsScreen{
             recordsCount{
                 isVisible()
-                hasText("3 записи")
+                hasText("3 записей")
             }
 
             circleTextView1{

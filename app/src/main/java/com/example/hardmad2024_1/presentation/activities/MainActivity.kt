@@ -10,7 +10,9 @@ import com.example.hardmad2024_1.presentation.fragments.JournalFragment
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.MainActivityBinding
 import com.example.hardmad2024_1.presentation.util.classes.JournalFragmentData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity:FragmentActivity() {
     private lateinit var binding: MainActivityBinding
 

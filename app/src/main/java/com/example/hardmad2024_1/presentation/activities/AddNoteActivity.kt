@@ -16,6 +16,7 @@ import com.example.hardmad2024_1.presentation.util.classes.JournalFragmentData
 import com.example.hardmad2024_1.presentation.util.classes.CircleClass
 import com.example.hardmad2024_1.presentation.util.adapters.EmotionCirclesAdapter
 import java.time.LocalTime
+import java.util.Locale
 
 
 class AddNoteActivity:ComponentActivity() {
@@ -129,7 +130,8 @@ class AddNoteActivity:ComponentActivity() {
                 .putExtra("card",
                     JournalFragmentData(
                         date = "сегодня, " + String.format("%02d",LocalTime.now().hour) + ":" + String.format("%02d",LocalTime.now().minute),
-                        emoteText = binding.emotionTitle.text.toString().toLowerCase(),
+                        emoteText = binding.emotionTitle.text.toString()
+                            .lowercase(Locale.getDefault()),
                         textColor = resources[0],
                         backgroundDrawable = resources[1],
                         icon = resources[2]

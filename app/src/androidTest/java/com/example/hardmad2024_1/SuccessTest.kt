@@ -2,19 +2,16 @@ package com.example.hardmad2024_1
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.activities.WelcomeActivity
+import com.example.hardmad2024_1.presentation.welcome_screen.WelcomeActivity
 import com.example.hardmad2024_1.screens.AddNoteDetailsScreen
 import com.example.hardmad2024_1.screens.AddNoteScreen
 import com.example.hardmad2024_1.screens.GridItem
 import com.example.hardmad2024_1.screens.JournalScreen
 import com.example.hardmad2024_1.screens.MainScreen
 import com.example.hardmad2024_1.screens.NotificationItem
-import com.example.hardmad2024_1.screens.OftenStatisticsScreen
-import com.example.hardmad2024_1.screens.PagerItem
 import com.example.hardmad2024_1.screens.RecordsItem
 import com.example.hardmad2024_1.screens.SettingsScreen
 import com.example.hardmad2024_1.screens.StatisticsScreen
-import com.example.hardmad2024_1.screens.VerticalFragmentScreen
 import com.example.hardmad2024_1.screens.WelcomeScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule

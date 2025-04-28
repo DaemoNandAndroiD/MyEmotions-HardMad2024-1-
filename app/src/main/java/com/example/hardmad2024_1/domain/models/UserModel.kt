@@ -5,7 +5,7 @@ import com.example.hardmad2024_1.data.room.entities.UserEntity
 data class UserModel(
     val id : String,
     val name : String,
-    val avatarPath : String?
+    val avatarPath : String? = null
 )
 
 fun UserModel.toUserEntity() = UserEntity(

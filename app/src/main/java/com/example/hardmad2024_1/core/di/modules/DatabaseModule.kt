@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.core.di
+package com.example.hardmad2024_1.core.di.modules
 
 import android.content.Context
 import androidx.room.Room

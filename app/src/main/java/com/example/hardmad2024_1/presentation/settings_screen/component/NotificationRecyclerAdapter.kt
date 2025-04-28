@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hardmad2024_1.R
 
-class NotificationRecyclerAdapter():RecyclerView.Adapter<NotificationRecyclerAdapter.NotificationViewHolder>() {
-    private val items:MutableList<String> = mutableListOf()
-
+class NotificationRecyclerAdapter(
+    var items:MutableList<String> = mutableListOf(),
+    val onDelete : (Int) -> Unit
+):RecyclerView.Adapter<NotificationRecyclerAdapter.NotificationViewHolder>() {
     class NotificationViewHolder(view: View):RecyclerView.ViewHolder(view){
         val textView = view.findViewById<TextView>(R.id.time)
         val button = view.findViewById<ImageButton>(R.id.delete_btn)
@@ -28,18 +29,13 @@ class NotificationRecyclerAdapter():RecyclerView.Adapter<NotificationRecyclerAda
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         holder.textView.text = items[position]
-        holder.button.setOnClickListener {
-            deleteItem(position)
+        holder.button.setOnClickListener{
+            onDelete(position)
         }
     }
 
-    fun addItem(time:String){
-        items.add(time)
-        notifyItemChanged(items.size - 1)
-    }
-
-    fun deleteItem(position: Int){
-        items.removeAt(position)
+    fun loadNewList(newItems : List<String>){
+        items = newItems.toMutableList()
         notifyDataSetChanged()
     }
 }

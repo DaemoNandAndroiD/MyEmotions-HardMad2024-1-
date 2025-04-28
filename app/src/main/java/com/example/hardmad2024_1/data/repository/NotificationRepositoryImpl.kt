@@ -1,5 +1,6 @@
 package com.example.hardmad2024_1.data.repository
 
+import android.util.Log
 import com.example.hardmad2024_1.data.room.dao.NotificationDao
 import com.example.hardmad2024_1.data.room.entities.NotificationEntity
 import com.example.hardmad2024_1.domain.interfaces.NotificationRepository
@@ -10,15 +11,15 @@ class NotificationRepositoryImpl @Inject constructor(
     private val dao : NotificationDao
 ) : NotificationRepository{
     override suspend fun getAllNotifications(userId : String): Flow<List<NotificationEntity>> {
-        TODO("Not yet implemented")
+        return dao.getAllNotifications(userId)
     }
 
     override suspend fun addNotification(notificationEntity: NotificationEntity) {
-        TODO("Not yet implemented")
+        dao.addNotification(notificationEntity)
     }
 
     override suspend fun deleteNotification(notification: NotificationEntity) {
-        TODO("Not yet implemented")
+        dao.deleteNotification(notification)
     }
 
 }

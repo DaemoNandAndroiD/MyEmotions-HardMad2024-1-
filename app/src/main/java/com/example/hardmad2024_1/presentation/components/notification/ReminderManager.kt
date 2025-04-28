@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.presentation.services
+package com.example.hardmad2024_1.presentation.components.notification
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -25,6 +25,10 @@ object ReminderManager {
             set(Calendar.HOUR_OF_DAY, hours)
             set(Calendar.MINUTE, minutes)
             set(Calendar.SECOND, 0)
+        }
+
+        if (calendar.timeInMillis < System.currentTimeMillis()) {
+            calendar.add(Calendar.DAY_OF_YEAR, 1)
         }
 
         try {

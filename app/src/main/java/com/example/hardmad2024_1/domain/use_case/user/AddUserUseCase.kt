@@ -11,10 +11,10 @@ import javax.inject.Inject
 class AddUserUseCase @Inject constructor(
     private val repository: UserRepository
 ) {
-    operator fun invoke(user: UserModel) = flow {
+    operator fun invoke(id : String, name : String) = flow {
         emit(StateHandler.Loading)
 
-        repository.addUser(user.toUserEntity())
+        repository.addUser(UserModel(id, name).toUserEntity())
 
         emit(StateHandler.Success(Unit))
     }.catch { e ->

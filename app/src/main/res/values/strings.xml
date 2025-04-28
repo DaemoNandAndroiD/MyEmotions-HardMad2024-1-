@@ -73,6 +73,8 @@
     <string name="security_description">ощущение безопасности, когда ничего не угрожает</string>
     <string name="add_note_button_text">Добавить запись</string>
 
+    <string name="server_client_id">891824277797-l3o42dda5t618mrssjg01kaq2c9dch87.apps.googleusercontent.com</string>
+
     <plurals name="days">
         <item quantity="one">%d день</item>
         <item quantity="few">%d дня</item>

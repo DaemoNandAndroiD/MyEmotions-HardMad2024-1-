@@ -14,10 +14,10 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override suspend fun addUser(userEntity: UserEntity) {
-        TODO("Not yet implemented")
+        return userDao.addUser(userEntity)
     }
 
     override suspend fun editUser(userEntity: UserEntity) {
-        TODO("Not yet implemented")
+        return userDao.editUser(userEntity)
     }
 }

@@ -1,7 +1,13 @@
-package com.example.hardmad2024_1.core.di
+package com.example.hardmad2024_1.core.di.modules
 
+import com.example.hardmad2024_1.core.di.qualifiers.ViewModelUseCase
+import com.example.hardmad2024_1.domain.interfaces.DataStoreRepository
 import com.example.hardmad2024_1.domain.interfaces.NotificationRepository
 import com.example.hardmad2024_1.domain.interfaces.UserRepository
+import com.example.hardmad2024_1.domain.use_case.datastore.GetFingerPrintEnabledUseCase
+import com.example.hardmad2024_1.domain.use_case.datastore.GetNotificationEnabledUseCase
+import com.example.hardmad2024_1.domain.use_case.datastore.SetFingerPrintEnabledUseCase
+import com.example.hardmad2024_1.domain.use_case.datastore.SetNotificationEnabledUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.AddNotificationUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.DeleteNotificationUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.GetAllNotificationsUseCase
@@ -41,4 +47,21 @@ object UseCaseModule {
     @Provides
     @ViewModelScoped
     fun provideEditUserUseCase(repository: UserRepository) = EditUserUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    @ViewModelUseCase
+    fun provideGetNotificationEnabledUseCase(repository: DataStoreRepository) = GetNotificationEnabledUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideSetNotificationEnabledUseCase(repository: DataStoreRepository) = SetNotificationEnabledUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetFingerPrintEnabledUseCase(repository: DataStoreRepository) = GetFingerPrintEnabledUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideSetFingerPrintEnabledUseCase(repository: DataStoreRepository) = SetFingerPrintEnabledUseCase(repository)
 }

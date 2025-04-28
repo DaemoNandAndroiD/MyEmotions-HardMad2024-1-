@@ -1,5 +1,6 @@
 package com.example.hardmad2024_1.domain.use_case.user
 
+import android.util.Log
 import com.example.hardmad2024_1.domain.interfaces.UserRepository
 import com.example.hardmad2024_1.domain.models.UserModel
 import com.example.hardmad2024_1.domain.models.toUserEntity
@@ -12,6 +13,7 @@ class EditUserUseCase @Inject constructor(
     private val repository: UserRepository
 ) {
     operator fun invoke(user: UserModel) = flow {
+        Log.d("here", "4")
         emit(StateHandler.Loading)
 
         repository.editUser(user.toUserEntity())

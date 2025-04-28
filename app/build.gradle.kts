@@ -5,6 +5,7 @@ plugins {
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -69,12 +70,29 @@ dependencies {
 
     //room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.play.services.auth)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
     //hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    //glide
+    implementation(libs.glide)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
+    //biometric
+    implementation(libs.androidx.biometric)
+
+    //firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
 
     testImplementation(libs.test.core.ktx)
     testImplementation(libs.androidx.runner)

@@ -2,7 +2,7 @@ package com.example.hardmad2024_1
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.activities.WelcomeActivity
+import com.example.hardmad2024_1.presentation.welcome_screen.WelcomeActivity
 import com.example.hardmad2024_1.screens.WelcomeScreen
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule

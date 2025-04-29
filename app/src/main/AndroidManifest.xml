@@ -22,8 +22,8 @@
         tools:replace="android:theme">
         <activity
             android:name=".presentation.splash_screen.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.HardMad20241">
+            android:theme="@style/Theme.HardMad20241.SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,7 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".presentation.activities.MainActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".presentation.activities.AddNoteActivity"
+        <activity android:name=".presentation.add_note_activity.AddNoteActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".presentation.activities.AddNoteDetailsActivity"
             android:screenOrientation="portrait"></activity>

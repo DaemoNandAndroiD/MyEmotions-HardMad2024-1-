@@ -1,7 +1,7 @@
 package com.example.hardmad2024_1.screens
 
 import android.view.View
-import com.example.hardmad2024_1.presentation.activities.AddNoteActivity
+import com.example.hardmad2024_1.presentation.add_note_activity.AddNoteActivity
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerItem

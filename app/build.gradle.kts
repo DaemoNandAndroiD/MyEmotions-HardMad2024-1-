@@ -94,6 +94,8 @@ dependencies {
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
     testImplementation(libs.test.core.ktx)
     testImplementation(libs.androidx.runner)
     testImplementation(libs.androidx.rules)

@@ -15,15 +15,15 @@ class RecordRepositoryImpl @Inject constructor(
         userId: String,
         from: Date,
         to: Date
-    ): Flow<List<Map<RecordEntity, EmotionEntity>>> {
-        TODO("Not yet implemented")
+    ): Flow<Map<RecordEntity, EmotionEntity>> {
+        return recordDao.getEmotions(userId, from, to)
     }
 
     override suspend fun addRecord(recordEntity: RecordEntity) {
-        TODO("Not yet implemented")
+        recordDao.addRecord(recordEntity)
     }
 
     override suspend fun editEntity(recordEntity: RecordEntity) {
-        TODO("Not yet implemented")
+        recordDao.editEntity(recordEntity)
     }
 }

@@ -18,7 +18,6 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.size
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.AddNoteDetailsActivityBinding
-import com.example.hardmad2024_1.presentation.util.classes.JournalFragmentData
 import com.example.hardmad2024_1.presentation.util.extensions.toPx
 
 class AddNoteDetailsActivity:ComponentActivity() {
@@ -26,8 +25,6 @@ class AddNoteDetailsActivity:ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        val card = intent.getParcelableExtra<JournalFragmentData>("card")
 
         binding = AddNoteDetailsActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -47,10 +44,6 @@ class AddNoteDetailsActivity:ComponentActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             intent.putExtra("isEmpty", false)
             startActivity(intent)
-        }
-
-        card?.let {
-            editCard(it, binding.card)
         }
 
         binding.activityContainer.addView(createTextView("Приём пищи"), binding.activityContainer.size -2)
@@ -151,16 +144,5 @@ class AddNoteDetailsActivity:ComponentActivity() {
         }
 
         return textView
-    }
-
-    private fun editCard(card: JournalFragmentData, cardView: View){
-        cardView.background = resources.getDrawable(card.backgroundDrawable)
-        cardView.findViewById<TextView>(R.id.date).text = card.date
-        cardView.findViewById<ImageView>(R.id.icon).setImageResource(card.icon)
-        val emotionType = cardView.findViewById<TextView>(R.id.emotion_type)
-        emotionType.apply {
-            text = card.emoteText
-            setTextColor(resources.getColor(card.textColor))
-        }
     }
 }

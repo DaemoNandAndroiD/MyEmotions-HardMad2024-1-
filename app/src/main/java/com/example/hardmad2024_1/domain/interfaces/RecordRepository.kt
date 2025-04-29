@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import java.util.Date
 
 interface RecordRepository {
-    suspend fun getEmotions(userId : String, from : Date, to : Date) : Flow<List<Map<RecordEntity, EmotionEntity>>>
+    suspend fun getEmotions(userId : String, from : Date, to : Date) : Flow<Map<RecordEntity, EmotionEntity>>
 
     suspend fun addRecord(recordEntity: RecordEntity)
 

@@ -1,22 +1,29 @@
 package com.example.hardmad2024_1.presentation.util.adapters
 
 import android.animation.ValueAnimator
-import android.content.Context
+import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.presentation.util.classes.CircleClass
+import com.example.hardmad2024_1.domain.models.EmotionColor
+import com.example.hardmad2024_1.domain.models.EmotionModel
 
-class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>, val title: TextView, val desc:TextView, val onClick:()->Unit) :RecyclerView.Adapter<EmotionCirclesAdapter.EmotionViewHolder>() {
-    var previousView:View? = null
-    var previousViewIndex:Int? = 0
+class EmotionCirclesAdapter(
+    val resources: Resources,
+    private var items: MutableList<EmotionModel> = mutableListOf(),
+    val onItemClick: (EmotionModel) -> Unit
+) : RecyclerView.Adapter<EmotionCirclesAdapter.EmotionViewHolder>() {
+    private var previousView: View? = null
+    private var previousViewIndex: Int? = 0
 
     class EmotionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val parent = view
-        val backgroundView = view.findViewById<View>(R.id.viewBackground)
+        val backgroundView: View = view.findViewById(R.id.viewBackground)
         val text: TextView = view.findViewById(R.id.emotionText)
     }
 
@@ -27,26 +34,41 @@ class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>,
     }
 
     override fun getItemCount(): Int {
-        return circles.size
+        return items.size
     }
 
-    override fun onBindViewHolder(holder: EmotionViewHolder, position: Int) {
-        holder.text.text = circles[position].text
-        holder.backgroundView.backgroundTintList = circles[position].backgroundTint
+    override fun onBindViewHolder(holder: EmotionViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        holder.text.text = resources.getString(items[position].name)
+        holder.backgroundView.backgroundTintList = when (items[position].color) {
+            EmotionColor.BLUE -> ResourcesCompat.getColorStateList(
+                resources,
+                R.color.blue_text,
+                null
+            )
+
+            EmotionColor.GREEN -> ResourcesCompat.getColorStateList(
+                resources,
+                R.color.green_text,
+                null
+            )
+
+            EmotionColor.RED -> ResourcesCompat.getColorStateList(resources, R.color.red_text, null)
+            EmotionColor.YELLOW -> ResourcesCompat.getColorStateList(
+                resources,
+                R.color.yellow_text,
+                null
+            )
+        }
 
         holder.parent.setOnClickListener {
             if (previousView != holder.parent) {
                 previousView?.let { animateScale(it, 1f) }
-                previousViewIndex?.let{shiftElements(it, holder, 0f)}
+                previousViewIndex?.let { shiftElements(it, holder, 0f) }
 
                 animateScale(holder.parent, 1.3f)
-                shiftElements(position,holder, 40f)
-                onClick()
+                shiftElements(position, holder, 40f)
 
-                title.text = circles[position].text
-                title.setTextColor(circles[position].backgroundTint)
-
-                desc.text = circles[position].hiddenDescription
+                onItemClick(items[position])
 
                 previousView = holder.parent
                 previousViewIndex = position
@@ -54,70 +76,78 @@ class EmotionCirclesAdapter(val context: Context, val circles:List<CircleClass>,
         }
     }
 
-    fun shiftElements(position: Int, holder: EmotionViewHolder, translation:Float){
-        val row = position/4
-        val col = position%4
+    fun loadNewList(newItems: List<EmotionModel>) {
+        items = newItems.toMutableList()
+        notifyDataSetChanged()
+    }
+
+    fun shiftElements(position: Int, holder: EmotionViewHolder, translation: Float) {
+        val row = position / 4
+        val col = position % 4
 
         val recyclerView = holder.parent.parent as RecyclerView
 
         var index = position
 
-        while (index + 4 <= 15){
+        while (index + 4 <= 15) {
             index += 4
             recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
                 animateTranslation(
-                    it, translation, false)
+                    it, translation, false
+                )
             }
         }
 
         index = position
 
-        while (index - 4 >= 0){
+        while (index - 4 >= 0) {
             index -= 4
             recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
                 animateTranslation(
-                    it, -translation, false)
+                    it, -translation, false
+                )
             }
         }
 
         index = position
 
-        while ((index - 1)/4 == position/4){
+        while ((index - 1) / 4 == position / 4) {
             index--
             recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
                 animateTranslation(
-                    it, -translation, true)
+                    it, -translation, true
+                )
             }
         }
 
         index = position
 
-        while ((index + 1)/4 == position/4){
+        while ((index + 1) / 4 == position / 4) {
             index++
             recyclerView.findViewHolderForAdapterPosition(index)?.itemView?.let {
                 animateTranslation(
-                    it, translation, true)
+                    it, translation, true
+                )
             }
         }
     }
 }
 
-fun animateTranslation(view: View, translation: Float, isTranslationX:Boolean){
-    if (isTranslationX){
+fun animateTranslation(view: View, translation: Float, isTranslationX: Boolean) {
+    if (isTranslationX) {
         ValueAnimator.ofFloat(view.translationX, translation).apply {
             duration = 200
-            addUpdateListener { animator->
+            addUpdateListener { animator ->
                 val value = animator.animatedValue as Float
 
                 view.translationX = value
             }
             start()
         }
-    }
-    else{
+    } else {
         ValueAnimator.ofFloat(view.translationY, translation).apply {
             duration = 200
-            addUpdateListener { animator->
+            addUpdateListener { animator ->
                 val value = animator.animatedValue as Float
 
                 view.translationY = value

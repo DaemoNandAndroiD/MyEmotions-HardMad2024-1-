@@ -2,13 +2,16 @@ package com.example.hardmad2024_1.core.di.modules
 
 import com.example.hardmad2024_1.data.data_store.DataStoreManager
 import com.example.hardmad2024_1.data.repository.DataStoreRepositoryImpl
+import com.example.hardmad2024_1.data.repository.EmotionRepositoryImpl
 import com.example.hardmad2024_1.data.repository.NotificationRepositoryImpl
 import com.example.hardmad2024_1.data.repository.RecordRepositoryImpl
 import com.example.hardmad2024_1.data.repository.UserRepositoryImpl
+import com.example.hardmad2024_1.data.room.dao.EmotionDao
 import com.example.hardmad2024_1.data.room.dao.NotificationDao
 import com.example.hardmad2024_1.data.room.dao.RecordDao
 import com.example.hardmad2024_1.data.room.dao.UserDao
 import com.example.hardmad2024_1.domain.interfaces.DataStoreRepository
+import com.example.hardmad2024_1.domain.interfaces.EmotionRepository
 import com.example.hardmad2024_1.domain.interfaces.NotificationRepository
 import com.example.hardmad2024_1.domain.interfaces.RecordRepository
 import com.example.hardmad2024_1.domain.interfaces.UserRepository
@@ -42,4 +45,9 @@ object RepositoryModule {
     @Singleton
     fun providesDataStoreRepository(dataStoreManager: DataStoreManager): DataStoreRepository =
         DataStoreRepositoryImpl(dataStoreManager)
+
+    @Provides
+    @Singleton
+    fun provideEmotionRepository(emotionDao: EmotionDao): EmotionRepository =
+        EmotionRepositoryImpl(emotionDao)
 }

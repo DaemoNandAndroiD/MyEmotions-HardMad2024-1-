@@ -134,4 +134,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    fun signOut(){
+        googleAuthUiClient.signOut()
+    }
 }

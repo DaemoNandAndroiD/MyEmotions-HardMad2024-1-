@@ -157,6 +157,20 @@
 
             </LinearLayout>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/log_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/label_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/velasans_medium"
+                android:paddingVertical="16dp"
+                android:text="@string/signout"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -22,7 +22,7 @@ class GoogleAuthUiClient(
             val googleIdOption = GetGoogleIdOption.Builder()
                 .setFilterByAuthorizedAccounts(false)
                 .setServerClientId(context.getString(R.string.server_client_id))
-                .setAutoSelectEnabled(true)
+                .setAutoSelectEnabled(false)
                 .build()
 
             val request = GetCredentialRequest.Builder()
@@ -50,5 +50,9 @@ class GoogleAuthUiClient(
     fun getSignedInUser(): String? {
         val firebaseUser = auth.currentUser
         return firebaseUser?.uid
+    }
+
+    fun signOut(){
+        auth.signOut()
     }
 }

@@ -21,6 +21,7 @@
     <string name="settings_title">Настройки</string>
     <string name="send_notifications">Присылать напоминания</string>
     <string name="add_notification">Добавить напоминание</string>
+    <string name="signout">Выйти из аккаунта</string>
     <string name="enter_fingerprint">Вход по отпечатку пальца</string>
     <string name="bottom_sheet_title">Напоминание</string>
     <string name="hours_desc">Часы</string>
@@ -88,4 +89,7 @@
         <item quantity="many">%d записей</item>
         <item quantity="other">%d записей</item>
     </plurals>
+
+    <string name="today">сегодня, %s</string>
+    <string name="yesterday">вчера, %s</string>
 </resources>

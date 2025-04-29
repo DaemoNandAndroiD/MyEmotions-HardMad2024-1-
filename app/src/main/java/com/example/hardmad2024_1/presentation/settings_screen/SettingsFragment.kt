@@ -34,7 +34,7 @@ import com.example.hardmad2024_1.databinding.SettingsFragmentBinding
 import com.example.hardmad2024_1.domain.util.StateHandler
 import com.example.hardmad2024_1.presentation.components.notification.ReminderManager
 import com.example.hardmad2024_1.presentation.settings_screen.component.NotificationRecyclerAdapter
-import com.example.hardmad2024_1.presentation.welcome_screen.auth.GoogleAuthUiClient
+import com.example.hardmad2024_1.presentation.welcome_screen.WelcomeActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat.CLOCK_24H
@@ -205,6 +205,15 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
         binding.fingerprintSwitcher.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setFingerPrintEnabled(isChecked)
+        }
+
+        binding.logOut.setOnClickListener {
+            viewModel.signOut()
+
+            val intent = Intent(requireContext(), WelcomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 

@@ -17,42 +17,7 @@
         android:src="@drawable/ic_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageButton>
-
-    <!--<com.example.hardmad2024_1.utilities.WScrollView
-        android:id="@+id/hsv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButton"
-        android:scrollbars="none"
-        android:fillViewport="true">
-
-        <HorizontalScrollView
-            android:id="@+id/sv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:fillViewport="true">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="700dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:overScrollMode="never"
-                    android:scrollbars="none" />
-            </FrameLayout>
-
-
-        </HorizontalScrollView>
-    </com.example.hardmad2024_1.utilities.WScrollView>-->
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.otaliastudios.zoom.ZoomLayout

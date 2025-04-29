@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.NONE)
     suspend fun addUser(user : UserEntity)
 
     @Query("SELECT * FROM user WHERE userId = :userId LIMIT 1")

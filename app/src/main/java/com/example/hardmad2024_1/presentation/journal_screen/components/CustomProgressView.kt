@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.presentation.custom_views
+package com.example.hardmad2024_1.presentation.journal_screen.components
 
 import android.content.Context
 import android.graphics.Canvas

@@ -12,7 +12,7 @@ import androidx.core.app.NotificationCompat
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.core.di.entry_point.NotificationReceiverEntryPoint
 import com.example.hardmad2024_1.domain.util.StateHandler
-import com.example.hardmad2024_1.presentation.activities.AddNoteActivity
+import com.example.hardmad2024_1.presentation.add_note_activity.AddNoteActivity
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

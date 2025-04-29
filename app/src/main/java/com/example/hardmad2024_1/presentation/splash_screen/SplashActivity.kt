@@ -2,13 +2,18 @@ package com.example.hardmad2024_1.presentation.splash_screen
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricPrompt
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.domain.util.StateHandler
 import com.example.hardmad2024_1.presentation.activities.MainActivity
 import com.example.hardmad2024_1.presentation.welcome_screen.WelcomeActivity
@@ -22,8 +27,13 @@ class SplashActivity : FragmentActivity() {
     @Inject lateinit var googleAuthUiClient: GoogleAuthUiClient
     private val viewModel by viewModels<SplashViewModel>()
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.post_splash_activity)
+        enableEdgeToEdge()
 
         observeViewModel()
     }

@@ -15,24 +15,34 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.JournalFragmentBinding
+import com.example.hardmad2024_1.domain.models.EmotionColor
+import com.example.hardmad2024_1.domain.models.JournalModel
+import com.example.hardmad2024_1.domain.models.NotificationModel
+import com.example.hardmad2024_1.domain.models.RecordModel
 import com.example.hardmad2024_1.domain.util.StateHandler
 import com.example.hardmad2024_1.presentation.add_note_activity.AddNoteActivity
+import com.example.hardmad2024_1.presentation.add_note_details_screen.AddNoteDetailsActivity
 import com.example.hardmad2024_1.presentation.journal_screen.components.JournalRecordsAdapter
 import com.example.hardmad2024_1.presentation.util.classes.ShortNote
 import com.example.hardmad2024_1.presentation.util.extensions.toPx
 import com.example.hardmad2024_1.presentation.journal_screen.components.CustomProgressView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import kotlin.math.max
 
 @AndroidEntryPoint
 class JournalFragment : Fragment() {
     private var _binding: JournalFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var recyclerAdapter : JournalRecordsAdapter
+    private lateinit var recyclerAdapter: JournalRecordsAdapter
     private val viewModel by viewModels<JournalViewModel>()
 
     override fun onCreateView(
@@ -46,16 +56,16 @@ class JournalFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        recyclerAdapter = JournalRecordsAdapter(resources, onClick = {})
+        recyclerAdapter = JournalRecordsAdapter(resources, onClick = {
+            val newIntent = Intent(requireContext(), AddNoteDetailsActivity::class.java)
+            newIntent.putExtra(AddNoteDetailsActivity.RECORD_ID_KEY, it.recordId)
+            startActivity(newIntent)
+        })
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.records.text = this.resources.getQuantityString(R.plurals.records, 5, 5)
-        binding.perDay.text = this.resources.getQuantityString(R.plurals.records, 2, 2)
-        binding.streak.text = this.resources.getQuantityString(R.plurals.days, 3, 3)
 
         observeViewModel()
         setupRecycler()
@@ -74,20 +84,41 @@ class JournalFragment : Fragment() {
 
     private fun observeViewModel() {
         lifecycleScope.launch {
-            viewModel.recordsState.collect { state ->
-                when (state) {
-                    is StateHandler.Error -> Unit
-                    StateHandler.Initial -> Unit
-                    StateHandler.Loading -> Unit
-                    is StateHandler.Success -> {
-                        recyclerAdapter.loadNewList(newItems = state.data)
+            repeatOnLifecycle(Lifecycle.State.RESUMED){
+                viewModel.recordsState.combine(viewModel.notificationState) { stateHandler: StateHandler<JournalModel>, stateHandler2: StateHandler<List<NotificationModel>> ->
+                    Pair(stateHandler, stateHandler2)
+                }.collect { (records, notification) ->
+                    when {
+                        records is StateHandler.Success && notification is StateHandler.Success -> {
+                            recyclerAdapter.loadNewList(records.data.recordModel)
+                            setupProgressBar(records.data.recordModel, notification.data.size)
+
+                            binding.perDay.text = resources.getQuantityString(
+                                R.plurals.records,
+                                notification.data.size,
+                                notification.data.size
+                            )
+
+                            binding.records.text = resources.getQuantityString(
+                                R.plurals.records,
+                                records.data.todayRecordsCount,
+                                records.data.todayRecordsCount
+                            )
+
+                            binding.streak.text = resources.getQuantityString(
+                                R.plurals.days,
+                                records.data.streak,
+                                records.data.streak
+                            )
+                        }
                     }
                 }
             }
+
         }
     }
 
-    private fun setupProgressBar(isEmpty: Boolean) {
+    private fun setupProgressBar(list: List<RecordModel>, goal: Int) {
         val params = binding.progressBarContainer.layoutParams
         val screenWidth = Resources.getSystem().displayMetrics.widthPixels
         val calculatedWidth = screenWidth - 48.toPx(requireContext())
@@ -95,7 +126,7 @@ class JournalFragment : Fragment() {
         params.height = calculatedWidth
         binding.progressBarContainer.layoutParams = params
 
-        if (requireActivity().intent.getBooleanExtra("isEmpty", true)) {
+        if (list.isEmpty()) {
             binding.progressBarEmpty.visibility = VISIBLE
             val rotateAnimation = AnimationUtils.loadAnimation(context, R.anim.rotation_gradient)
             binding.progressBarEmpty.animation = rotateAnimation
@@ -104,12 +135,20 @@ class JournalFragment : Fragment() {
             val progressView = CustomProgressView(
                 requireContext(),
                 colors = listOf(
-                    ShortNote(color = Color.YELLOW, amount = 4),
-                    ShortNote(color = Color.RED, amount = 1),
-                    ShortNote(color = Color.GREEN, amount = 2),
-                    ShortNote(color = Color.BLUE, amount = 1)
+                    ShortNote(
+                        color = Color.YELLOW,
+                        amount = list.count { it.emotionColor == EmotionColor.YELLOW }),
+                    ShortNote(
+                        color = Color.RED,
+                        amount = list.count { it.emotionColor == EmotionColor.RED }),
+                    ShortNote(
+                        color = Color.GREEN,
+                        amount = list.count { it.emotionColor == EmotionColor.GREEN }),
+                    ShortNote(
+                        color = Color.BLUE,
+                        amount = list.count { it.emotionColor == EmotionColor.BLUE })
                 ),
-                totalAmount = 10
+                totalAmount = max(goal, list.size)
             )
             progressView.layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -118,6 +157,8 @@ class JournalFragment : Fragment() {
 
             binding.progressBarContainer.addView(progressView)
         }
+
+        binding.buttonContainer.visibility = VISIBLE
     }
 
     private fun setupOnClickListeners() {

@@ -12,11 +12,14 @@ import com.example.hardmad2024_1.domain.use_case.datastore.GetFingerPrintEnabled
 import com.example.hardmad2024_1.domain.use_case.datastore.GetNotificationEnabledUseCase
 import com.example.hardmad2024_1.domain.use_case.datastore.SetFingerPrintEnabledUseCase
 import com.example.hardmad2024_1.domain.use_case.datastore.SetNotificationEnabledUseCase
+import com.example.hardmad2024_1.domain.use_case.emotion.GetEmotionByIdUseCase
 import com.example.hardmad2024_1.domain.use_case.emotion.GetEmotionsUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.AddNotificationUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.DeleteNotificationUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.GetAllNotificationsUseCase
+import com.example.hardmad2024_1.domain.use_case.record.AddRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetLastRecordsUseCase
+import com.example.hardmad2024_1.domain.use_case.record.GetRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.user.AddUserUseCase
 import com.example.hardmad2024_1.domain.use_case.user.EditUserUseCase
 import com.example.hardmad2024_1.domain.use_case.user.GetUserUseCase
@@ -34,15 +37,18 @@ object UseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideAddNotificationUseCase(repository: NotificationRepository) = AddNotificationUseCase(repository)
+    fun provideAddNotificationUseCase(repository: NotificationRepository) =
+        AddNotificationUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideDeleteNotificationUseCase(repository: NotificationRepository) = DeleteNotificationUseCase(repository)
+    fun provideDeleteNotificationUseCase(repository: NotificationRepository) =
+        DeleteNotificationUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideGetNotificationUseCase(repository: NotificationRepository) = GetAllNotificationsUseCase(repository)
+    fun provideGetNotificationUseCase(repository: NotificationRepository) =
+        GetAllNotificationsUseCase(repository)
 
     @Provides
     @ViewModelScoped
@@ -59,19 +65,23 @@ object UseCaseModule {
     @Provides
     @ViewModelScoped
     @ViewModelUseCase
-    fun provideGetNotificationEnabledUseCase(repository: DataStoreRepository) = GetNotificationEnabledUseCase(repository)
+    fun provideGetNotificationEnabledUseCase(repository: DataStoreRepository) =
+        GetNotificationEnabledUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideSetNotificationEnabledUseCase(repository: DataStoreRepository) = SetNotificationEnabledUseCase(repository)
+    fun provideSetNotificationEnabledUseCase(repository: DataStoreRepository) =
+        SetNotificationEnabledUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideGetFingerPrintEnabledUseCase(repository: DataStoreRepository) = GetFingerPrintEnabledUseCase(repository)
+    fun provideGetFingerPrintEnabledUseCase(repository: DataStoreRepository) =
+        GetFingerPrintEnabledUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideSetFingerPrintEnabledUseCase(repository: DataStoreRepository) = SetFingerPrintEnabledUseCase(repository)
+    fun provideSetFingerPrintEnabledUseCase(repository: DataStoreRepository) =
+        SetFingerPrintEnabledUseCase(repository)
 
     @Provides
     @ViewModelScoped
@@ -79,9 +89,23 @@ object UseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideLastRecordsUseCase(repository: RecordRepository, dateMapper: DateMapper) = GetLastRecordsUseCase(repository, dateMapper)
+    fun provideLastRecordsUseCase(repository: RecordRepository, dateMapper: DateMapper) =
+        GetLastRecordsUseCase(repository, dateMapper)
 
     @Provides
     @ViewModelScoped
     fun provideGetEmotionsUseCase(repository: EmotionRepository) = GetEmotionsUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetEmotionByIdUseCase(repository: EmotionRepository, dateMapper: DateMapper) =
+        GetEmotionByIdUseCase(repository, dateMapper)
+
+    @Provides
+    @ViewModelScoped
+    fun provideAddRecordUseCase(repository: RecordRepository) = AddRecordUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) = GetRecordUseCase(repository, dateMapper)
 }

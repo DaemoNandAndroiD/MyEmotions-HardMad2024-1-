@@ -26,4 +26,8 @@ class RecordRepositoryImpl @Inject constructor(
     override suspend fun editEntity(recordEntity: RecordEntity) {
         recordDao.editEntity(recordEntity)
     }
+
+    override suspend fun getRecord(id: String): Map<RecordEntity, EmotionEntity> {
+        return recordDao.getRecord(id)
+    }
 }

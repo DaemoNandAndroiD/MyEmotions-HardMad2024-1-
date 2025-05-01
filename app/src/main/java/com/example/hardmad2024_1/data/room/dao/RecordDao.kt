@@ -19,4 +19,7 @@ interface RecordDao {
 
     @Update
     suspend fun editEntity(recordEntity: RecordEntity)
+
+    @Query("SELECT * from record JOIN emotion ON emotion.emotionId = record.emotionId where recordId=:recordId LIMIT 1")
+    suspend fun getRecord(recordId : String) : Map<RecordEntity, EmotionEntity>
 }

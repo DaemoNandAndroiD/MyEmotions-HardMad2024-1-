@@ -12,4 +12,7 @@ interface EmotionDao {
 
     @Query("SELECT * FROM emotion")
     suspend fun getEmotions() : List<EmotionEntity>
+
+    @Query("SELECT * FROM emotion WHERE emotionId=:id LIMIT 1")
+    suspend fun getEmotion(id : String) : EmotionEntity
 }

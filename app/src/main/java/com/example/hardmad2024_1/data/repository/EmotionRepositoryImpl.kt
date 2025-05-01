@@ -11,4 +11,8 @@ class EmotionRepositoryImpl @Inject constructor(
     override suspend fun getAllEmotions(): List<EmotionEntity> {
         return dao.getEmotions()
     }
+
+    override suspend fun getEmotion(id:String): EmotionEntity {
+        return dao.getEmotion(id)
+    }
 }

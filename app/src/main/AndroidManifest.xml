@@ -37,7 +37,7 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".presentation.add_note_activity.AddNoteActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".presentation.activities.AddNoteDetailsActivity"
+        <activity android:name=".presentation.add_note_details_screen.AddNoteDetailsActivity"
             android:screenOrientation="portrait"></activity>
 
         <receiver android:name=".presentation.components.notification.NotificationReceiver" />

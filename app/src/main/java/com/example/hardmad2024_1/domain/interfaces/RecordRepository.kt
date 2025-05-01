@@ -11,4 +11,6 @@ interface RecordRepository {
     suspend fun addRecord(recordEntity: RecordEntity)
 
     suspend fun editEntity(recordEntity: RecordEntity)
+
+    suspend fun getRecord(id : String) : Map<RecordEntity,EmotionEntity>
 }

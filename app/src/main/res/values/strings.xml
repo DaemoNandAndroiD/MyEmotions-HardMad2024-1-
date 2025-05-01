@@ -92,4 +92,30 @@
 
     <string name="today">сегодня, %s</string>
     <string name="yesterday">вчера, %s</string>
+
+    <string-array name="activity_chips">
+        <item>Приём пищи</item>
+        <item>Встреча с друзьями</item>
+        <item>Тренировка</item>
+        <item>Хобби</item>
+        <item>Отдых</item>
+        <item>Поездка</item>
+    </string-array>
+
+    <string-array name="human_chips">
+        <item>Один</item>
+        <item>Друзья</item>
+        <item>Семья</item>
+        <item>Коллеги</item>
+        <item>Партнёр</item>
+        <item>Питомцы</item>
+    </string-array>
+
+    <string-array name="place_chips">
+        <item>Дом</item>
+        <item>Работа</item>
+        <item>Школа</item>
+        <item>Транспорт</item>
+        <item>Улица</item>
+    </string-array>
 </resources>

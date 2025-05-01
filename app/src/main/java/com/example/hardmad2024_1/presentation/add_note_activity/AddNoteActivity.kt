@@ -11,17 +11,14 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.AddNoteActivityBinding
 import com.example.hardmad2024_1.domain.models.EmotionColor
-import com.example.hardmad2024_1.presentation.activities.AddNoteDetailsActivity
-import com.example.hardmad2024_1.presentation.util.classes.CircleClass
+import com.example.hardmad2024_1.presentation.add_note_details_screen.AddNoteDetailsActivity
 import com.example.hardmad2024_1.presentation.util.adapters.EmotionCirclesAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -63,6 +60,7 @@ class AddNoteActivity : ComponentActivity() {
                     this,
                     AddNoteDetailsActivity::class.java
                 )
+                intent.putExtra(AddNoteDetailsActivity.EMOTION_ID_KEY, model.emotionId)
                 startActivity(intent)
             }
         }

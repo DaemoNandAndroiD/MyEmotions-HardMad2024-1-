@@ -39,10 +39,10 @@ class JournalRecordsAdapter(
     override fun onBindViewHolder(holder: RecordsViewHolder, position: Int) {
         holder.parentView.background = ResourcesCompat.getDrawable(
             resources, when (items[position].emotionColor) {
-                EmotionColor.BLUE -> R.drawable.blue_gradient_circle
-                EmotionColor.GREEN -> R.drawable.green_gradient_circle
-                EmotionColor.RED -> R.drawable.red_gradient_circle
-                EmotionColor.YELLOW -> R.drawable.yellow_gradient_circle
+                EmotionColor.BLUE -> R.drawable.card_shape_blue
+                EmotionColor.GREEN -> R.drawable.card_shape_green
+                EmotionColor.RED -> R.drawable.card_shape_red
+                EmotionColor.YELLOW -> R.drawable.card_shape_yellow
             }, null
         )
 

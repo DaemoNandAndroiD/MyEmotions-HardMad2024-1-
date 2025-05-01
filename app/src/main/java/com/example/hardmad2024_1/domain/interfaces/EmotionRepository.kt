@@ -4,4 +4,6 @@ import com.example.hardmad2024_1.data.room.entities.EmotionEntity
 
 interface EmotionRepository {
     suspend fun getAllEmotions() : List<EmotionEntity>
+
+    suspend fun getEmotion(id : String) : EmotionEntity
 }

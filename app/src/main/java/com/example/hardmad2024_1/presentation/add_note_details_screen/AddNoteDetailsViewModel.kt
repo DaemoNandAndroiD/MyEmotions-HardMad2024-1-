@@ -9,6 +9,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.hardmad2024_1.domain.models.RecordModel
 import com.example.hardmad2024_1.domain.use_case.emotion.GetEmotionByIdUseCase
 import com.example.hardmad2024_1.domain.use_case.record.AddRecordUseCase
+import com.example.hardmad2024_1.domain.use_case.record.EditRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetRecordUseCase
 import com.example.hardmad2024_1.domain.util.StateHandler
 import com.example.hardmad2024_1.presentation.add_note_details_screen.util.ChipType
@@ -29,6 +30,7 @@ class AddNoteDetailsViewModel @Inject constructor(
     private val addRecordUseCase: AddRecordUseCase,
     private val googleAuthUiClient: GoogleAuthUiClient,
     private val getRecordUseCase: GetRecordUseCase,
+    private val editRecordUseCase: EditRecordUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val recordId = savedStateHandle.get<String>(AddNoteDetailsActivity.RECORD_ID_KEY)
@@ -54,7 +56,7 @@ class AddNoteDetailsViewModel @Inject constructor(
     }
 
     private fun initialLoad() {
-        var activityChips = InitialChips.getActivityChips(context).toMutableList()
+        val activityChips = InitialChips.getActivityChips(context).toMutableList()
         val humanChips = InitialChips.getHumanChips(context).toMutableList()
         val placeChips = InitialChips.getPlaceChips(context).toMutableList()
 
@@ -133,7 +135,7 @@ class AddNoteDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             val userId = googleAuthUiClient.getSignedInUser()
 
-            if (userId != null && emotionId != null) {
+            if (userId != null) {
                 val activityList =
                     (activityChipsState.value as StateHandler.Success).data.filter { it.isChecked }
                         .map { it.name }
@@ -147,14 +149,23 @@ class AddNoteDetailsViewModel @Inject constructor(
                         .map { it.name }
 
                 recordsState.value?.recordId?.let {
-                    addRecordUseCase(
-                        userId,
-                        emotionId,
-                        it,
-                        activityList,
-                        humanList,
-                        placeList
-                    ).collect()
+                    if (recordId == null && emotionId!=null) {
+                        addRecordUseCase(
+                            userId,
+                            emotionId,
+                            it,
+                            activityList,
+                            humanList,
+                            placeList
+                        ).collect()
+                    } else if(recordId != null && recordsState.value != null) {
+                        editRecordUseCase(
+                            userId, recordsState.value!!,
+                            activityList = activityList,
+                            peopleList = humanList,
+                            placeList = placeList
+                        ).collect()
+                    }
                 }
             }
         }
@@ -238,12 +249,13 @@ class AddNoteDetailsViewModel @Inject constructor(
         }
     }
 
-    class Factory constructor(
+    class Factory(
         private val context: Context,
         private val savedStateHandle: SavedStateHandle,
         private val getEmotionByIdUseCase: GetEmotionByIdUseCase,
         private val addRecordUseCase: AddRecordUseCase,
         private val getRecordUseCase: GetRecordUseCase,
+        private val editRecordUseCase: EditRecordUseCase,
         private val googleAuthUiClient: GoogleAuthUiClient
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
@@ -253,6 +265,7 @@ class AddNoteDetailsViewModel @Inject constructor(
                 addRecordUseCase,
                 googleAuthUiClient,
                 getRecordUseCase,
+                editRecordUseCase,
                 savedStateHandle
             ) as T
         }

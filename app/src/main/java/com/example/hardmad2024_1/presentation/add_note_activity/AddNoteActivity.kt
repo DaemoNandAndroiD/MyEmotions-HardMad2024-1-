@@ -17,7 +17,6 @@ import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.AddNoteActivityBinding
 import com.example.hardmad2024_1.domain.models.EmotionColor
 import com.example.hardmad2024_1.presentation.add_note_details_screen.AddNoteDetailsActivity
-import com.example.hardmad2024_1.presentation.util.adapters.EmotionCirclesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

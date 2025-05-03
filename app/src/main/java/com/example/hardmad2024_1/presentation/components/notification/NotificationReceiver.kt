@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.hardmad2024_1.R
@@ -19,6 +20,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Calendar
 
 class NotificationReceiver : BroadcastReceiver() {
@@ -30,15 +33,17 @@ class NotificationReceiver : BroadcastReceiver() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onReceive(context: Context?, p1: Intent?) {
         if (context == null) return
-
-        scheduleNextNotification(context)
+        Log.d("NotificationChecker", "after if")
 
         val entryPoint = EntryPointAccessors.fromApplication<NotificationReceiverEntryPoint>(context)
         val getNotificationEnabledUseCase = entryPoint.getNotificationEnabledUseCase()
 
+        reschedule(context)
+
         CoroutineScope(Dispatchers.Main).launch {
             val result = getNotificationEnabledUseCase().drop(1).first()
             if (result is StateHandler.Success && result.data) {
+                Log.d("NotificationChecker", "success")
                 postNotification(context)
             }
         }
@@ -63,29 +68,29 @@ class NotificationReceiver : BroadcastReceiver() {
 
         val pendingIntent = PendingIntent.getActivity(
             context,
-            0,
+            System.currentTimeMillis().toInt(),
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_app)
-            .setContentTitle("Your Reminder")
-            .setContentText("How was your day?")
+            .setContentTitle(context.getString(R.string.notification_title))
+            .setContentText(context.getString(R.string.notification_description))
             .setCategory(NotificationCompat.CATEGORY_REMINDER)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
         notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
+
+        Log.d("NotificationChecker", "after notify")
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    private fun scheduleNextNotification(context: Context) {
-        ReminderManager.scheduleReminder(
-            context,
-            Calendar.getInstance().time.hours,
-            Calendar.getInstance().time.minutes
-        )
+    private fun reschedule(context: Context){
+        val current = Calendar.getInstance().time.toInstant().atZone(ZoneId.systemDefault())
+        Log.d("NotificationChecker", "${current.hour} : ${current.minute}")
+        ReminderManager.scheduleReminder(context, current.hour, current.minute)
     }
 }

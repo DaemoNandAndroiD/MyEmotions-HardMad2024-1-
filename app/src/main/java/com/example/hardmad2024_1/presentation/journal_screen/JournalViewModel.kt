@@ -45,7 +45,7 @@ class JournalViewModel @Inject constructor(
         todayEnd.set(Calendar.MILLISECOND, 999)
 
         val yesterdayStart = today.clone() as Calendar
-        yesterdayStart.add(Calendar.DAY_OF_MONTH, -1)
+        yesterdayStart.add(Calendar.DAY_OF_MONTH, -6)
         yesterdayStart.set(Calendar.HOUR_OF_DAY, 0)
         yesterdayStart.set(Calendar.MINUTE, 0)
         yesterdayStart.set(Calendar.SECOND, 0)

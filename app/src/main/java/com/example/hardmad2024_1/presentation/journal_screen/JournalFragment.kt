@@ -56,7 +56,7 @@ class JournalFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        recyclerAdapter = JournalRecordsAdapter(resources, onClick = {
+        recyclerAdapter = JournalRecordsAdapter(resources,requireContext(), onClick = {
             val newIntent = Intent(requireContext(), AddNoteDetailsActivity::class.java)
             newIntent.putExtra(AddNoteDetailsActivity.RECORD_ID_KEY, it.recordId)
             startActivity(newIntent)
@@ -91,7 +91,7 @@ class JournalFragment : Fragment() {
                     when {
                         records is StateHandler.Success && notification is StateHandler.Success -> {
                             recyclerAdapter.loadNewList(records.data.recordModel)
-                            setupProgressBar(records.data.recordModel, notification.data.size)
+                            setupProgressBar(records.data.recordModel.take(records.data.todayRecordsCount), notification.data.size)
 
                             binding.perDay.text = resources.getQuantityString(
                                 R.plurals.records,

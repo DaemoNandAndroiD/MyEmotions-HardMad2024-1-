@@ -18,6 +18,7 @@ import com.example.hardmad2024_1.domain.use_case.notification.AddNotificationUse
 import com.example.hardmad2024_1.domain.use_case.notification.DeleteNotificationUseCase
 import com.example.hardmad2024_1.domain.use_case.notification.GetAllNotificationsUseCase
 import com.example.hardmad2024_1.domain.use_case.record.AddRecordUseCase
+import com.example.hardmad2024_1.domain.use_case.record.EditRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetLastRecordsUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.user.AddUserUseCase
@@ -108,4 +109,8 @@ object UseCaseModule {
     @Provides
     @ViewModelScoped
     fun provideGetRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) = GetRecordUseCase(repository, dateMapper)
+
+    @Provides
+    @ViewModelScoped
+    fun provideEditRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) = EditRecordUseCase(repository, dateMapper)
 }

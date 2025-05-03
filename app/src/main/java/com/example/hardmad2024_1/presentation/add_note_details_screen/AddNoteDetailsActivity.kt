@@ -25,6 +25,7 @@ import com.example.hardmad2024_1.domain.models.EmotionColor
 import com.example.hardmad2024_1.domain.models.RecordModel
 import com.example.hardmad2024_1.domain.use_case.emotion.GetEmotionByIdUseCase
 import com.example.hardmad2024_1.domain.use_case.record.AddRecordUseCase
+import com.example.hardmad2024_1.domain.use_case.record.EditRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetRecordUseCase
 import com.example.hardmad2024_1.domain.util.StateHandler
 import com.example.hardmad2024_1.presentation.activities.MainActivity
@@ -52,6 +53,9 @@ class AddNoteDetailsActivity : ComponentActivity() {
 
     @Inject
     lateinit var getRecordUseCase: GetRecordUseCase
+
+    @Inject
+    lateinit var editRecordUseCase: EditRecordUseCase
 
     @Inject
     lateinit var googleAuthUiClient: GoogleAuthUiClient
@@ -85,6 +89,7 @@ class AddNoteDetailsActivity : ComponentActivity() {
                 addRecordUseCase = addRecordUseCase,
                 googleAuthUiClient = googleAuthUiClient,
                 getRecordUseCase = getRecordUseCase,
+                editRecordUseCase = editRecordUseCase,
                 savedStateHandle = savedStateHandle
             )
         )[AddNoteDetailsViewModel::class]
@@ -208,7 +213,7 @@ class AddNoteDetailsActivity : ComponentActivity() {
 
         lifecycleScope.launch {
             viewModel.recordsState.collect {
-                if(it != null){
+                if (it != null) {
                     setupCard(it)
                 }
             }

@@ -92,6 +92,15 @@
 
     <string name="today">сегодня, %s</string>
     <string name="yesterday">вчера, %s</string>
+    <string name="monday">понедельник, %s</string>
+    <string name="tuesday">вторник, %s</string>
+    <string name="wednesday">среда, %s</string>
+    <string name="thursday">четверг, %s</string>
+    <string name="friday">пятница, %s</string>
+    <string name="saturday">суббота, %s</string>
+    <string name="sunday">воскресенье, %s</string>
+    <string name="notification_title">Сделайте запись</string>
+    <string name="notification_description">Что вы сейчас чувствуете?</string>
 
     <string-array name="activity_chips">
         <item>Приём пищи</item>

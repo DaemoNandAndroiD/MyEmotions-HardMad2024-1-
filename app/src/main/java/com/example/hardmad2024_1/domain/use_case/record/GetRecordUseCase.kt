@@ -28,7 +28,8 @@ class GetRecordUseCase @Inject constructor(
                         emotionColor = entity.value.color,
                         date = dateMapper.formatDate(entity.key.createdAt),
                         icon = entity.value.icon,
-                        recordId = entity.key.recordId
+                        recordId = entity.key.recordId,
+                        emotionId = entity.value.emotionId
                     ),
                     activities = entity.key.recordDetails.activities,
                     peoples = entity.key.recordDetails.peoples,

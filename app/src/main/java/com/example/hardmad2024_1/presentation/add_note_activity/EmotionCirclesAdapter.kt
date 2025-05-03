@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.presentation.util.adapters
+package com.example.hardmad2024_1.presentation.add_note_activity
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint

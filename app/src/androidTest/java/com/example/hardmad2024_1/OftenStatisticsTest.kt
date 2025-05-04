@@ -2,7 +2,7 @@ package com.example.hardmad2024_1
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.fragments.OftenStatisticsFragment
+import com.example.hardmad2024_1.presentation.statistics.often_statistics.OftenStatisticsFragment
 import com.example.hardmad2024_1.presentation.util.classes.OftenStatisticsData
 import com.example.hardmad2024_1.screens.OftenStatisticsScreen
 import com.example.hardmad2024_1.screens.RVItem

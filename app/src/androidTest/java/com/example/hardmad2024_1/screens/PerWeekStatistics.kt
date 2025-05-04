@@ -1,9 +1,8 @@
 package com.example.hardmad2024_1.screens
 
 import android.view.View
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.presentation.fragments.WeekStatisticsFragment
+import com.example.hardmad2024_1.presentation.statistics.week_statistics.WeekStatisticsFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView

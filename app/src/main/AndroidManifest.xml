@@ -33,7 +33,7 @@
         <activity
             android:name=".presentation.welcome_screen.WelcomeActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".presentation.activities.MainActivity"
+        <activity android:name=".presentation.main_screen.MainActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".presentation.add_note_activity.AddNoteActivity"
             android:screenOrientation="portrait"></activity>

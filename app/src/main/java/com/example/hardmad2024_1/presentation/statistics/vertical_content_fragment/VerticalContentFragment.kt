@@ -1,33 +1,47 @@
-package com.example.hardmad2024_1.presentation.fragments
+package com.example.hardmad2024_1.presentation.statistics.vertical_content_fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.VerticalContentFragmentBinding
-import com.example.hardmad2024_1.presentation.util.classes.VerticalFragmentData
-import com.example.hardmad2024_1.presentation.util.adapters.ViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import io.secf4ult.verticaltablayout.VerticalTabLayout
 import io.secf4ult.verticaltablayout.VerticalTabLayoutMediator
+import java.util.Calendar
+import java.util.Date
 
-class VerticalContentFragment: Fragment(R.layout.vertical_content_fragment) {
-    private lateinit var binding:VerticalContentFragmentBinding
-    private var data: VerticalFragmentData = VerticalFragmentData()
+@AndroidEntryPoint
+class VerticalContentFragment : Fragment(R.layout.vertical_content_fragment) {
+    private lateinit var binding: VerticalContentFragmentBinding
+    private lateinit var datePair: Pair<Date, Date>
+    private val viewModel by viewModels<VerticalStatisticsViewModel>()
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        arguments?.getParcelable<VerticalFragmentData>(BUNDLE_KEY)?.let{
-            data = it
+        val serializable = arguments?.getSerializable(BUNDLE_KEY, Pair::class.java)
+
+        if (serializable?.first is Date && serializable.second is Date) {
+            datePair = serializable as Pair<Date, Date>
+        } else {
+            val today = Calendar.getInstance().time
+            datePair = today to today
         }
+
+        viewModel.getData(datePair.first, datePair.second)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = VerticalContentFragmentBinding.bind(view)
 
-        val adapter = ViewPagerAdapter(this, data)
+        val adapter = ViewPagerAdapter(this)
         binding.viewPagerVertical.adapter = adapter
 
         binding.viewPagerVertical.offscreenPageLimit = 1
@@ -54,13 +68,13 @@ class VerticalContentFragment: Fragment(R.layout.vertical_content_fragment) {
         ).attach()
     }
 
-    companion object{
+    companion object {
         private const val BUNDLE_KEY = "FRAGMENT_DATA"
 
-        fun createNewInstance(verticalFragmentData: VerticalFragmentData): VerticalContentFragment {
+        fun createNewInstance(start: Date, end: Date): VerticalContentFragment {
             return VerticalContentFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelable(BUNDLE_KEY, verticalFragmentData)
+                    putSerializable(BUNDLE_KEY, start to end)
                 }
             }
         }

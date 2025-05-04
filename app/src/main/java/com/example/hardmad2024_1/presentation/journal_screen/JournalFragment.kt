@@ -29,9 +29,9 @@ import com.example.hardmad2024_1.domain.util.StateHandler
 import com.example.hardmad2024_1.presentation.add_note_activity.AddNoteActivity
 import com.example.hardmad2024_1.presentation.add_note_details_screen.AddNoteDetailsActivity
 import com.example.hardmad2024_1.presentation.journal_screen.components.JournalRecordsAdapter
-import com.example.hardmad2024_1.presentation.util.classes.ShortNote
 import com.example.hardmad2024_1.presentation.util.extensions.toPx
 import com.example.hardmad2024_1.presentation.journal_screen.components.CustomProgressView
+import com.example.hardmad2024_1.presentation.journal_screen.components.ShortNote
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine

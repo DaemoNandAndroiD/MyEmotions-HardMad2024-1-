@@ -1,6 +1,6 @@
 package com.example.hardmad2024_1.screens
 
-import com.example.hardmad2024_1.presentation.fragments.GeneralStatisticsFragment
+import com.example.hardmad2024_1.presentation.statistics.general_statistics.GeneralStatisticsFragment
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.text.KTextView

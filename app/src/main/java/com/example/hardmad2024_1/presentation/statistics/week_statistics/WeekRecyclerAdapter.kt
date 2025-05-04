@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.presentation.util.adapters
+package com.example.hardmad2024_1.presentation.statistics.week_statistics
 
 import android.content.Context
 import android.util.TypedValue
@@ -10,13 +10,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hardmad2024_1.R
+import com.example.hardmad2024_1.domain.models.WeekStatisticsModel
 import com.example.hardmad2024_1.presentation.util.extensions.toPx
-import com.example.hardmad2024_1.presentation.util.classes.WeekStatisticsData
 import com.google.android.flexbox.FlexboxLayout
 
-class WeekRecyclerAdapter(val context: Context, private val elements:Array<WeekStatisticsData>) :RecyclerView.Adapter<WeekRecyclerAdapter.WeekViewHolder>() {
+class WeekRecyclerAdapter(
+    val context: Context,
+    private var elements: List<WeekStatisticsModel> = mutableListOf()
+) : RecyclerView.Adapter<WeekRecyclerAdapter.WeekViewHolder>() {
 
-    class WeekViewHolder(view: View):RecyclerView.ViewHolder(view){
+    class WeekViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val dayOfWeekText = view.findViewById<TextView>(R.id.day_of_week)
         val dateText = view.findViewById<TextView>(R.id.date)
         val emotionsContainer = view.findViewById<LinearLayout>(R.id.emotions_container)
@@ -39,20 +42,20 @@ class WeekRecyclerAdapter(val context: Context, private val elements:Array<WeekS
         holder.dateText.text = elements[position].date
         holder.dayOfWeekText.text = elements[position].dayOfWeek
 
-        repeat(elements[position].emotionsTexts.size){
-            holder.emotionsContainer.addView(createTextView(elements[position].emotionsTexts[it]))
+        repeat(elements[position].emotionList.size) {
+            holder.emotionsContainer.addView(createTextView(elements[position].emotionList[it]))
         }
 
-        if(elements[position].icons.isNotEmpty()){
+        if (elements[position].icons.isNotEmpty()) {
             holder.placeholder.visibility = View.GONE
         }
 
-        repeat(elements[position].icons.size){
+        repeat(elements[position].icons.size) {
             holder.iconContainer.addView(createImageView(elements[position].icons[it]))
         }
     }
 
-    private fun createTextView(text:String):TextView{
+    private fun createTextView(text: Int): TextView {
         return TextView(context).apply {
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -61,21 +64,26 @@ class WeekRecyclerAdapter(val context: Context, private val elements:Array<WeekS
             setTextColor(resources.getColor(R.color.white))
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 12F)
             typeface = resources.getFont(R.font.velasans_regular)
-            setText(text)
+            setText(context.getString(text))
         }
     }
 
-    private fun createImageView(drawable:Int): ImageView {
+    private fun createImageView(drawable: Int): ImageView {
         val layoutParameters = LinearLayout.LayoutParams(
             40.toPx(context),
             40.toPx(context)
         )
 
-        layoutParameters.setMargins(0,0, 4.toPx(context), 4.toPx(context))
+        layoutParameters.setMargins(0, 0, 4.toPx(context), 4.toPx(context))
 
         return ImageView(context).apply {
             layoutParams = layoutParameters
             setImageResource(drawable)
         }
+    }
+
+    fun loadNewItems(newItems : List<WeekStatisticsModel>){
+        elements = newItems
+        notifyDataSetChanged()
     }
 }

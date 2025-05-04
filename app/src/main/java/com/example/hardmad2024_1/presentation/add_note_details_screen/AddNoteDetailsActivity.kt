@@ -3,8 +3,6 @@ package com.example.hardmad2024_1.presentation.add_note_details_screen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.inputmethod.EditorInfo
 import android.widget.CompoundButton
 import androidx.activity.ComponentActivity
@@ -14,12 +12,10 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.size
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.core.di.qualifiers.SingletonUseCase
 import com.example.hardmad2024_1.databinding.AddNoteDetailsActivityBinding
 import com.example.hardmad2024_1.domain.models.EmotionColor
 import com.example.hardmad2024_1.domain.models.RecordModel
@@ -28,14 +24,13 @@ import com.example.hardmad2024_1.domain.use_case.record.AddRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.EditRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetRecordUseCase
 import com.example.hardmad2024_1.domain.util.StateHandler
-import com.example.hardmad2024_1.presentation.activities.MainActivity
+import com.example.hardmad2024_1.presentation.main_screen.MainActivity
 import com.example.hardmad2024_1.presentation.add_note_details_screen.util.ChipType
 import com.example.hardmad2024_1.presentation.add_note_details_screen.util.OptionChip
 import com.example.hardmad2024_1.presentation.welcome_screen.auth.GoogleAuthUiClient
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

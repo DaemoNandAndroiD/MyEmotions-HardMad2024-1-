@@ -1,7 +1,7 @@
 package com.example.hardmad2024_1.screens
 
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import com.example.hardmad2024_1.presentation.activities.MainActivity
+import com.example.hardmad2024_1.presentation.main_screen.MainActivity
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.bottomnav.KBottomNavigationView

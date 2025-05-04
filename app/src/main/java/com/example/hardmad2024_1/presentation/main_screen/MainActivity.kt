@@ -1,4 +1,4 @@
-package com.example.hardmad2024_1.presentation.activities
+package com.example.hardmad2024_1.presentation.main_screen
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.hardmad2024_1.presentation.journal_screen.JournalFragment
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.databinding.MainActivityBinding
 import dagger.hilt.android.AndroidEntryPoint

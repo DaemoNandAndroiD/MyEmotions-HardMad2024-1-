@@ -2,9 +2,7 @@ package com.example.hardmad2024_1
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.fragments.GeneralStatisticsFragment
-import com.example.hardmad2024_1.presentation.fragments.WeekStatisticsFragment
-import com.example.hardmad2024_1.presentation.util.classes.GeneralStatisticsData
+import com.example.hardmad2024_1.presentation.statistics.week_statistics.WeekStatisticsFragment
 import com.example.hardmad2024_1.presentation.util.classes.WeekStatisticsData
 import com.example.hardmad2024_1.screens.ItemRecords
 import com.example.hardmad2024_1.screens.PerWeekStatisticsScreen

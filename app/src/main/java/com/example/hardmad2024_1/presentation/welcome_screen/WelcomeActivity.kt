@@ -1,18 +1,12 @@
 package com.example.hardmad2024_1.presentation.welcome_screen
 
 import android.animation.ValueAnimator
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.biometric.BiometricPrompt
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,13 +14,9 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.hardmad2024_1.databinding.WelcomeActivityBinding
-import com.example.hardmad2024_1.domain.util.StateHandler
-import com.example.hardmad2024_1.presentation.activities.MainActivity
+import com.example.hardmad2024_1.presentation.main_screen.MainActivity
 import com.example.hardmad2024_1.presentation.welcome_screen.auth.GoogleAuthUiClient
-import com.otaliastudios.opengl.core.use
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.cos

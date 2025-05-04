@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.hardmad2024_1.R
 import com.example.hardmad2024_1.domain.util.StateHandler
-import com.example.hardmad2024_1.presentation.activities.MainActivity
+import com.example.hardmad2024_1.presentation.main_screen.MainActivity
 import com.example.hardmad2024_1.presentation.welcome_screen.WelcomeActivity
 import com.example.hardmad2024_1.presentation.welcome_screen.auth.GoogleAuthUiClient
 import dagger.hilt.android.AndroidEntryPoint

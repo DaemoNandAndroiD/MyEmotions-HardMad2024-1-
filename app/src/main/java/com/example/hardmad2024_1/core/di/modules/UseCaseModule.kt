@@ -20,6 +20,7 @@ import com.example.hardmad2024_1.domain.use_case.notification.GetAllNotification
 import com.example.hardmad2024_1.domain.use_case.record.AddRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.EditRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetLastRecordsUseCase
+import com.example.hardmad2024_1.domain.use_case.record.GetMappedRecordsForStatisticsUseCase
 import com.example.hardmad2024_1.domain.use_case.record.GetRecordUseCase
 import com.example.hardmad2024_1.domain.use_case.user.AddUserUseCase
 import com.example.hardmad2024_1.domain.use_case.user.EditUserUseCase
@@ -108,9 +109,16 @@ object UseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideGetRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) = GetRecordUseCase(repository, dateMapper)
+    fun provideGetRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) =
+        GetRecordUseCase(repository, dateMapper)
 
     @Provides
     @ViewModelScoped
-    fun provideEditRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) = EditRecordUseCase(repository, dateMapper)
+    fun provideEditRecordUseCase(repository: RecordRepository, dateMapper: DateMapper) =
+        EditRecordUseCase(repository, dateMapper)
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetMappedRecordsUseCase(repository: RecordRepository, dateMapper: DateMapper) =
+        GetMappedRecordsForStatisticsUseCase(repository, dateMapper)
 }

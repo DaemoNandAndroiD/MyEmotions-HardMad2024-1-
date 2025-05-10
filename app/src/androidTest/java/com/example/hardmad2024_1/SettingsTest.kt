@@ -2,7 +2,7 @@ package com.example.hardmad2024_1
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.fragments.SettingsFragment
+import com.example.hardmad2024_1.presentation.settings_screen.SettingsFragment
 import com.example.hardmad2024_1.screens.NotificationItem
 import com.example.hardmad2024_1.screens.SettingsScreen
 import org.junit.Test

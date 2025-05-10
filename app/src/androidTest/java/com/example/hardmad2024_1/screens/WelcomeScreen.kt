@@ -1,7 +1,7 @@
 package com.example.hardmad2024_1.screens
 
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.presentation.activities.WelcomeActivity
+import com.example.hardmad2024_1.presentation.welcome_screen.WelcomeActivity
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView

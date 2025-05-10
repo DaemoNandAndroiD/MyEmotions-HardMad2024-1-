@@ -2,7 +2,7 @@ package com.example.hardmad2024_1.screens
 
 import android.view.View
 import com.example.hardmad2024_1.R
-import com.example.hardmad2024_1.presentation.fragments.SettingsFragment
+import com.example.hardmad2024_1.presentation.settings_screen.SettingsFragment
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerItem

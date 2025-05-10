@@ -1,36 +1,60 @@
 [versions]
-agp = "8.8.0"
+agp = "8.8.2"
 androidxCoreKtx = "1.6.1"
+biometric = "1.4.0-alpha03"
 core = "1.6.1"
-kotlin = "2.0.0"
-coreKtx = "1.15.0"
+credentials = "1.5.0"
+datastorePreferences = "1.0.0"
+firebaseBom = "33.13.0"
+glide = "4.16.0"
+googleid = "1.1.1"
+gson = "2.13.0"
+kotlin = "2.1.20"
+coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.5.0"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.0"
 composeBom = "2024.04.01"
-constraintLayout = "2.2.0"
+constraintLayout = "2.2.1"
 material = "1.12.0"
-navigation = "2.8.7"
+navigation = "2.8.9"
 kaspresso = "1.6.0"
 flexbox = "3.0.0"
 fragment-testing = "1.8.6"
 orchestrator = "1.5.1"
+roomRuntime = "2.7.0"
 rules = "1.6.1"
 runner = "1.6.2"
 truth = "1.6.0"
 verticaltablayout = "v0.1.0"
 zoomlayout = "1.9.0"
+hilt = "2.56.1"
+playServicesAuth = "21.3.0"
 
 [libraries]
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
+androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-orchestrator = { module = "androidx.test:orchestrator", version.ref = "orchestrator" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidx-truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
+firebase-auth = { module = "com.google.firebase:firebase-auth-ktx" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 androidx-junit = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -54,6 +78,7 @@ fragment-testing = {group="androidx.fragment", name = "fragment-testing", versio
 test-core-ktx = { module = "androidx.test:core-ktx", version.ref = "androidxCoreKtx" }
 verticaltablayout = { module = "com.github.secf4ult:VerticalTabLayout", version.ref = "verticaltablayout" }
 zoomlayout = { module = "com.otaliastudios:zoomlayout", version.ref = "zoomlayout" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

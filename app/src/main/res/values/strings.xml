@@ -21,6 +21,7 @@
     <string name="settings_title">Настройки</string>
     <string name="send_notifications">Присылать напоминания</string>
     <string name="add_notification">Добавить напоминание</string>
+    <string name="signout">Выйти из аккаунта</string>
     <string name="enter_fingerprint">Вход по отпечатку пальца</string>
     <string name="bottom_sheet_title">Напоминание</string>
     <string name="hours_desc">Часы</string>
@@ -73,6 +74,8 @@
     <string name="security_description">ощущение безопасности, когда ничего не угрожает</string>
     <string name="add_note_button_text">Добавить запись</string>
 
+    <string name="server_client_id">891824277797-l3o42dda5t618mrssjg01kaq2c9dch87.apps.googleusercontent.com</string>
+
     <plurals name="days">
         <item quantity="one">%d день</item>
         <item quantity="few">%d дня</item>
@@ -86,4 +89,42 @@
         <item quantity="many">%d записей</item>
         <item quantity="other">%d записей</item>
     </plurals>
+
+    <string name="today">сегодня, %s</string>
+    <string name="yesterday">вчера, %s</string>
+    <string name="monday">понедельник, %s</string>
+    <string name="tuesday">вторник, %s</string>
+    <string name="wednesday">среда, %s</string>
+    <string name="thursday">четверг, %s</string>
+    <string name="friday">пятница, %s</string>
+    <string name="saturday">суббота, %s</string>
+    <string name="sunday">воскресенье, %s</string>
+    <string name="notification_title">Сделайте запись</string>
+    <string name="notification_description">Что вы сейчас чувствуете?</string>
+
+    <string-array name="activity_chips">
+        <item>Приём пищи</item>
+        <item>Встреча с друзьями</item>
+        <item>Тренировка</item>
+        <item>Хобби</item>
+        <item>Отдых</item>
+        <item>Поездка</item>
+    </string-array>
+
+    <string-array name="human_chips">
+        <item>Один</item>
+        <item>Друзья</item>
+        <item>Семья</item>
+        <item>Коллеги</item>
+        <item>Партнёр</item>
+        <item>Питомцы</item>
+    </string-array>
+
+    <string-array name="place_chips">
+        <item>Дом</item>
+        <item>Работа</item>
+        <item>Школа</item>
+        <item>Транспорт</item>
+        <item>Улица</item>
+    </string-array>
 </resources>

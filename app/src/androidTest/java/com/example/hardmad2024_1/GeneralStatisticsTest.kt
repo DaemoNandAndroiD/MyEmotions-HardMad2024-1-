@@ -2,7 +2,7 @@ package com.example.hardmad2024_1
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.fragments.GeneralStatisticsFragment
+import com.example.hardmad2024_1.presentation.statistics.general_statistics.GeneralStatisticsFragment
 import com.example.hardmad2024_1.screens.GeneralStatisticsScreen
 import com.example.hardmad2024_1.presentation.util.classes.GeneralStatisticsData
 import org.junit.Test
@@ -18,7 +18,7 @@ class GeneralStatisticsTest {
         GeneralStatisticsScreen{
             recordsCount{
                 isVisible()
-                hasText("3 записи")
+                hasText("3 записей")
             }
 
             circleTextView1{

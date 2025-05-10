@@ -2,7 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
+        android:name=".core.EmotionApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,23 +21,27 @@
         tools:targetApi="31"
         tools:replace="android:theme">
         <activity
-            android:name=".presentation.activities.WelcomeActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.HardMad20241"
-            android:screenOrientation="portrait">
+            android:name=".presentation.splash_screen.SplashActivity"
+            android:theme="@style/Theme.HardMad20241.SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.activities.MainActivity"
+        <activity
+            android:name=".presentation.welcome_screen.WelcomeActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".presentation.activities.AddNoteActivity"
+        <activity android:name=".presentation.main_screen.MainActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".presentation.activities.AddNoteDetailsActivity"
+        <activity android:name=".presentation.add_note_activity.AddNoteActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".presentation.add_note_details_screen.AddNoteDetailsActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <receiver android:name=".presentation.components.notification.NotificationReceiver" />
+
     </application>
 
 </manifest>

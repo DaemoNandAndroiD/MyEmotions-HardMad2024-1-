@@ -8,6 +8,7 @@
     android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -44,7 +45,6 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp">
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/per_day"
@@ -66,14 +66,11 @@
                 </TextView>
             </LinearLayout>
 
-
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/label_shape">
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/streak"
@@ -135,7 +132,8 @@
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/buttonContainer"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -3,7 +3,7 @@ package com.example.hardmad2024_1
 import androidx.compose.ui.test.isNotEnabled
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.hardmad2024_1.presentation.activities.AddNoteActivity
+import com.example.hardmad2024_1.presentation.add_note_activity.AddNoteActivity
 import com.example.hardmad2024_1.screens.AddNoteScreen
 import com.example.hardmad2024_1.screens.GridItem
 import org.junit.Rule

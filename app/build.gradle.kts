@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -61,6 +64,37 @@ dependencies {
     implementation(libs.verticaltablayout)
     implementation(libs.flexbox)
     implementation(libs.zoomlayout)
+
+    //serialization
+    implementation(libs.gson)
+
+    //room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.play.services.auth)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
+    //glide
+    implementation(libs.glide)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
+    //biometric
+    implementation(libs.androidx.biometric)
+
+    //firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     testImplementation(libs.test.core.ktx)
     testImplementation(libs.androidx.runner)

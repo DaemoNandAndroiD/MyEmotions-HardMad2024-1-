@@ -1,6 +1,6 @@
 package com.example.hardmad2024_1.screens
 
-import com.example.hardmad2024_1.presentation.activities.AddNoteDetailsActivity
+import com.example.hardmad2024_1.presentation.add_note_details_screen.AddNoteDetailsActivity
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView

@@ -1,7 +1,7 @@
 package com.example.hardmad2024_1.screens
 
 import android.view.View
-import com.example.hardmad2024_1.presentation.fragments.JournalFragment
+import com.example.hardmad2024_1.presentation.journal_screen.JournalFragment
 import com.example.hardmad2024_1.R
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
